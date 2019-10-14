@@ -1,0 +1,801 @@
+{
+  "contractName": "IFundsDistributionTokenOptional",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "by",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "fundsDeposited",
+          "type": "uint256"
+        }
+      ],
+      "name": "FundsDeposited",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "depositFunds",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "undistributedFunds",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "distributedFunds",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "distributeFunds",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        }
+      ],
+      "name": "depositAndDistributeFunds",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\r\n\r\nimport \"./external/tokens/IERC20.sol\";\r\n\r\n\r\ninterface IFundsDistributionTokenOptional {\r\n\r\n\t/** \r\n\t * @notice Deposits funds to this contract.\r\n\t * The deposited funds may be distributed to other accounts.\r\n\t */\r\n\tfunction depositFunds() external payable;\r\n\r\n\t/** \r\n\t * @notice Returns the total amount of funds that have been deposited to this contract but not yet distributed.\r\n\t */\r\n\tfunction undistributedFunds() external view returns(uint256);\r\n\r\n\t/** \r\n\t * @notice Returns the total amount of funds that have been distributed.\r\n\t */\r\n\tfunction distributedFunds() external view returns(uint256);\r\n\r\n\t/** \r\n\t * @notice Distributes undistributed funds to accounts.\r\n\t */\r\n\tfunction distributeFunds() external;\r\n\r\n\t/** \r\n\t * @notice Deposits and distributes funds to accounts.\r\n\t * @param from The source of the funds.\r\n\t */\r\n\tfunction depositAndDistributeFunds(address from) external payable;\r\n\r\n\t/**\r\n\t * @dev This event MUST emit when funds are deposited to this contract.\r\n\t * @param by the address of the sender of who deposited funds.\r\n\t * @param fundsDeposited The amount of distributed funds.\r\n\t */\r\n\tevent FundsDeposited(address indexed by, uint256 fundsDeposited);\r\n}",
+  "sourcePath": "C:/Users/Gary/funds-distribution-token-custom/contracts/IFundsDistributionTokenOptional.sol",
+  "ast": {
+    "absolutePath": "/C/Users/Gary/funds-distribution-token-custom/contracts/IFundsDistributionTokenOptional.sol",
+    "exportedSymbols": {
+      "IFundsDistributionTokenOptional": [
+        524
+      ]
+    },
+    "id": 525,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 495,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:3"
+      },
+      {
+        "absolutePath": "/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/IERC20.sol",
+        "file": "./external/tokens/IERC20.sol",
+        "id": 496,
+        "nodeType": "ImportDirective",
+        "scope": 525,
+        "sourceUnit": 1763,
+        "src": "27:38:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 524,
+        "linearizedBaseContracts": [
+          524
+        ],
+        "name": "IFundsDistributionTokenOptional",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Deposits funds to this contract.\r\nThe deposited funds may be distributed to other accounts.\r",
+            "id": 499,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 497,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "262:2:3"
+            },
+            "returnParameters": {
+              "id": 498,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "281:0:3"
+            },
+            "scope": 524,
+            "src": "241:41:3",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Returns the total amount of funds that have been deposited to this contract but not yet distributed.\r",
+            "id": 504,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "undistributedFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 500,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "441:2:3"
+            },
+            "returnParameters": {
+              "id": 503,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 502,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 504,
+                  "src": "466:7:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 501,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "466:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "465:9:3"
+            },
+            "scope": 524,
+            "src": "414:61:3",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Returns the total amount of funds that have been distributed.\r",
+            "id": 509,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "distributedFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 505,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "593:2:3"
+            },
+            "returnParameters": {
+              "id": 508,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 507,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 509,
+                  "src": "618:7:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 506,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "618:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "617:9:3"
+            },
+            "scope": 524,
+            "src": "568:59:3",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Distributes undistributed funds to accounts.\r",
+            "id": 512,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "distributeFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 510,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "727:2:3"
+            },
+            "returnParameters": {
+              "id": 511,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "738:0:3"
+            },
+            "scope": 524,
+            "src": "703:36:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Deposits and distributes funds to accounts.\r\n@param from The source of the funds.\r",
+            "id": 517,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositAndDistributeFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 515,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 514,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 517,
+                  "src": "891:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 513,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "891:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "890:14:3"
+            },
+            "returnParameters": {
+              "id": 516,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "921:0:3"
+            },
+            "scope": 524,
+            "src": "856:66:3",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event MUST emit when funds are deposited to this contract.\r\n@param by the address of the sender of who deposited funds.\r\n@param fundsDeposited The amount of distributed funds.\r",
+            "id": 523,
+            "name": "FundsDeposited",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 522,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 519,
+                  "indexed": true,
+                  "name": "by",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 523,
+                  "src": "1159:18:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 518,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1159:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 521,
+                  "indexed": false,
+                  "name": "fundsDeposited",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 523,
+                  "src": "1179:22:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 520,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1179:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1158:44:3"
+            },
+            "src": "1138:65:3"
+          }
+        ],
+        "scope": 525,
+        "src": "71:1135:3"
+      }
+    ],
+    "src": "0:1206:3"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Users/Gary/funds-distribution-token-custom/contracts/IFundsDistributionTokenOptional.sol",
+    "exportedSymbols": {
+      "IFundsDistributionTokenOptional": [
+        524
+      ]
+    },
+    "id": 525,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 495,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:3"
+      },
+      {
+        "absolutePath": "/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/IERC20.sol",
+        "file": "./external/tokens/IERC20.sol",
+        "id": 496,
+        "nodeType": "ImportDirective",
+        "scope": 525,
+        "sourceUnit": 1763,
+        "src": "27:38:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 524,
+        "linearizedBaseContracts": [
+          524
+        ],
+        "name": "IFundsDistributionTokenOptional",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Deposits funds to this contract.\r\nThe deposited funds may be distributed to other accounts.\r",
+            "id": 499,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 497,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "262:2:3"
+            },
+            "returnParameters": {
+              "id": 498,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "281:0:3"
+            },
+            "scope": 524,
+            "src": "241:41:3",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Returns the total amount of funds that have been deposited to this contract but not yet distributed.\r",
+            "id": 504,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "undistributedFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 500,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "441:2:3"
+            },
+            "returnParameters": {
+              "id": 503,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 502,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 504,
+                  "src": "466:7:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 501,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "466:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "465:9:3"
+            },
+            "scope": 524,
+            "src": "414:61:3",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Returns the total amount of funds that have been distributed.\r",
+            "id": 509,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "distributedFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 505,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "593:2:3"
+            },
+            "returnParameters": {
+              "id": 508,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 507,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 509,
+                  "src": "618:7:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 506,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "618:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "617:9:3"
+            },
+            "scope": 524,
+            "src": "568:59:3",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Distributes undistributed funds to accounts.\r",
+            "id": 512,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "distributeFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 510,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "727:2:3"
+            },
+            "returnParameters": {
+              "id": 511,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "738:0:3"
+            },
+            "scope": 524,
+            "src": "703:36:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Deposits and distributes funds to accounts.\r\n@param from The source of the funds.\r",
+            "id": 517,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositAndDistributeFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 515,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 514,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 517,
+                  "src": "891:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 513,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "891:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "890:14:3"
+            },
+            "returnParameters": {
+              "id": 516,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "921:0:3"
+            },
+            "scope": 524,
+            "src": "856:66:3",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event MUST emit when funds are deposited to this contract.\r\n@param by the address of the sender of who deposited funds.\r\n@param fundsDeposited The amount of distributed funds.\r",
+            "id": 523,
+            "name": "FundsDeposited",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 522,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 519,
+                  "indexed": true,
+                  "name": "by",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 523,
+                  "src": "1159:18:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 518,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1159:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 521,
+                  "indexed": false,
+                  "name": "fundsDeposited",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 523,
+                  "src": "1179:22:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 520,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1179:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1158:44:3"
+            },
+            "src": "1138:65:3"
+          }
+        ],
+        "scope": 525,
+        "src": "71:1135:3"
+      }
+    ],
+    "src": "0:1206:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.2",
+  "updatedAt": "2019-10-13T16:18:19.629Z",
+  "devdoc": {
+    "methods": {
+      "depositAndDistributeFunds(address)": {
+        "params": {
+          "from": "The source of the funds.\r"
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "depositAndDistributeFunds(address)": {
+        "notice": "Deposits and distributes funds to accounts.\r"
+      },
+      "depositFunds()": {
+        "notice": "Deposits funds to this contract.\r The deposited funds may be distributed to other accounts.\r"
+      },
+      "distributeFunds()": {
+        "notice": "Distributes undistributed funds to accounts.\r"
+      },
+      "distributedFunds()": {
+        "notice": "Returns the total amount of funds that have been distributed.\r"
+      },
+      "undistributedFunds()": {
+        "notice": "Returns the total amount of funds that have been deposited to this contract but not yet distributed.\r"
+      }
+    }
+  }
+}

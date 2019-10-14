@@ -1,0 +1,677 @@
+{
+  "contractName": "IFundsDistributionToken",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "by",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "fundsDistributed",
+          "type": "uint256"
+        }
+      ],
+      "name": "FundsDistributed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "by",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "fundsWithdrawn",
+          "type": "uint256"
+        }
+      ],
+      "name": "FundsWithdrawn",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "withdrawableFundsOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "withdrawFunds",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\r\n\r\n\r\ninterface IFundsDistributionToken {\r\n\r\n\t/**\r\n\t * @dev Returns the total amount of funds a given address is able to withdraw currently.\r\n\t * @param owner Address of FundsDistributionToken holder\r\n\t * @return A uint256 representing the available funds for a given account\r\n\t */\r\n\tfunction withdrawableFundsOf(address owner) external view returns (uint256);\r\n\r\n\t/**\r\n\t * @dev Withdraws all available funds for a FundsDistributionToken holder.\r\n\t */\r\n\tfunction withdrawFunds() external;\r\n\r\n\t/**\r\n\t * @dev This event emits when new funds are distributed\r\n\t * @param by the address of the sender who distributed funds\r\n\t * @param fundsDistributed the amount of funds received for distribution\r\n\t */\r\n\tevent FundsDistributed(address indexed by, uint256 fundsDistributed);\r\n\r\n\t/**\r\n\t * @dev This event emits when distributed funds are withdrawn by a token holder.\r\n\t * @param by the address of the receiver of funds\r\n\t * @param fundsWithdrawn the amount of funds that were withdrawn\r\n\t */\r\n\tevent FundsWithdrawn(address indexed by, uint256 fundsWithdrawn);\r\n}",
+  "sourcePath": "C:\\Users\\Gary\\funds-distribution-token-custom\\contracts\\IFundsDistributionToken.sol",
+  "ast": {
+    "absolutePath": "/C/Users/Gary/funds-distribution-token-custom/contracts/IFundsDistributionToken.sol",
+    "exportedSymbols": {
+      "IFundsDistributionToken": [
+        493
+      ]
+    },
+    "id": 494,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 470,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 493,
+        "linearizedBaseContracts": [
+          493
+        ],
+        "name": "IFundsDistributionToken",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev Returns the total amount of funds a given address is able to withdraw currently.\r\n@param owner Address of FundsDistributionToken holder\r\n@return A uint256 representing the available funds for a given account\r",
+            "id": 477,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdrawableFundsOf",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 473,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 472,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 477,
+                  "src": "336:13:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 471,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "336:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "335:15:2"
+            },
+            "returnParameters": {
+              "id": 476,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 475,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 477,
+                  "src": "374:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 474,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "374:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "373:9:2"
+            },
+            "scope": 493,
+            "src": "307:76:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Withdraws all available funds for a FundsDistributionToken holder.\r",
+            "id": 480,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdrawFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 478,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "499:2:2"
+            },
+            "returnParameters": {
+              "id": 479,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "510:0:2"
+            },
+            "scope": 493,
+            "src": "477:34:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event emits when new funds are distributed\r\n@param by the address of the sender who distributed funds\r\n@param fundsDistributed the amount of funds received for distribution\r",
+            "id": 486,
+            "name": "FundsDistributed",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 485,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 482,
+                  "indexed": true,
+                  "name": "by",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 486,
+                  "src": "747:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 481,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "747:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 484,
+                  "indexed": false,
+                  "name": "fundsDistributed",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 486,
+                  "src": "767:24:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 483,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "767:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "746:46:2"
+            },
+            "src": "724:69:2"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event emits when distributed funds are withdrawn by a token holder.\r\n@param by the address of the receiver of funds\r\n@param fundsWithdrawn the amount of funds that were withdrawn\r",
+            "id": 492,
+            "name": "FundsWithdrawn",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 491,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 488,
+                  "indexed": true,
+                  "name": "by",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 492,
+                  "src": "1033:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 487,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1033:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 490,
+                  "indexed": false,
+                  "name": "fundsWithdrawn",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 492,
+                  "src": "1053:22:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 489,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1053:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1032:44:2"
+            },
+            "src": "1012:65:2"
+          }
+        ],
+        "scope": 494,
+        "src": "29:1051:2"
+      }
+    ],
+    "src": "0:1080:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Users/Gary/funds-distribution-token-custom/contracts/IFundsDistributionToken.sol",
+    "exportedSymbols": {
+      "IFundsDistributionToken": [
+        493
+      ]
+    },
+    "id": 494,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 470,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 493,
+        "linearizedBaseContracts": [
+          493
+        ],
+        "name": "IFundsDistributionToken",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev Returns the total amount of funds a given address is able to withdraw currently.\r\n@param owner Address of FundsDistributionToken holder\r\n@return A uint256 representing the available funds for a given account\r",
+            "id": 477,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdrawableFundsOf",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 473,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 472,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 477,
+                  "src": "336:13:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 471,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "336:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "335:15:2"
+            },
+            "returnParameters": {
+              "id": 476,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 475,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 477,
+                  "src": "374:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 474,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "374:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "373:9:2"
+            },
+            "scope": 493,
+            "src": "307:76:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Withdraws all available funds for a FundsDistributionToken holder.\r",
+            "id": 480,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdrawFunds",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 478,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "499:2:2"
+            },
+            "returnParameters": {
+              "id": 479,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "510:0:2"
+            },
+            "scope": 493,
+            "src": "477:34:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event emits when new funds are distributed\r\n@param by the address of the sender who distributed funds\r\n@param fundsDistributed the amount of funds received for distribution\r",
+            "id": 486,
+            "name": "FundsDistributed",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 485,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 482,
+                  "indexed": true,
+                  "name": "by",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 486,
+                  "src": "747:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 481,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "747:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 484,
+                  "indexed": false,
+                  "name": "fundsDistributed",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 486,
+                  "src": "767:24:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 483,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "767:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "746:46:2"
+            },
+            "src": "724:69:2"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event emits when distributed funds are withdrawn by a token holder.\r\n@param by the address of the receiver of funds\r\n@param fundsWithdrawn the amount of funds that were withdrawn\r",
+            "id": 492,
+            "name": "FundsWithdrawn",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 491,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 488,
+                  "indexed": true,
+                  "name": "by",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 492,
+                  "src": "1033:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 487,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1033:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 490,
+                  "indexed": false,
+                  "name": "fundsWithdrawn",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 492,
+                  "src": "1053:22:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 489,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1053:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1032:44:2"
+            },
+            "src": "1012:65:2"
+          }
+        ],
+        "scope": 494,
+        "src": "29:1051:2"
+      }
+    ],
+    "src": "0:1080:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.2",
+  "updatedAt": "2019-10-14T14:49:05.830Z",
+  "devdoc": {
+    "methods": {
+      "withdrawFunds()": {
+        "details": "Withdraws all available funds for a FundsDistributionToken holder.\r"
+      },
+      "withdrawableFundsOf(address)": {
+        "details": "Returns the total amount of funds a given address is able to withdraw currently.\r",
+        "params": {
+          "owner": "Address of FundsDistributionToken holder\r"
+        },
+        "return": "A uint256 representing the available funds for a given account\r"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
