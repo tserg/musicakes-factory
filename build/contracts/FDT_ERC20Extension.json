@@ -5419,10 +5419,22 @@
       "links": {},
       "address": "0x2b83f6177Cb798996A92aE7476A6Ac41E0Ec558F",
       "transactionHash": "0x2da56e6ff916a545359a2f40f261e21225ab5cc53644482e9fee0c789b28c711"
+    },
+    "1571098311698": {
+      "events": {},
+      "links": {},
+      "address": "0x8c5700C0F34CbF5346A4a0817C8480dCcCF86651",
+      "transactionHash": "0x6ee1096f21ecd85721245ed19c48e02f875c9f6b3aa021664b964547a66fcacf"
+    },
+    "1571151165384": {
+      "events": {},
+      "links": {},
+      "address": "0xee1f75557032C1D4c09eF62E4cD212bA951CA74e",
+      "transactionHash": "0x2a5cca15a9a59fe426942476494348fad92024d215d3626598ba04f0345da758"
     }
   },
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-10-14T14:49:06.753Z",
+  "updatedAt": "2019-10-15T14:57:14.865Z",
   "devdoc": {
     "methods": {
       "accumulativeFundsOf(address)": {

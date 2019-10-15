@@ -8153,7 +8153,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-10-14T14:49:05.854Z",
+  "updatedAt": "2019-10-15T14:57:13.856Z",
   "devdoc": {
     "author": "Johannes Escherich\rRoger-Wu\rJohannes Pfeffer\rTom Lam\r",
     "details": "A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments, \r fee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw \r their claims.\r FundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and \r withdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.\r",

@@ -27,6 +27,118 @@ window.addEventListener('load', async () => {
   }
 });
 
+var _abi = [
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "name",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "decimals",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "payable": false,
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "balanceOf",
+    "outputs": [
+      {
+        "name": "balance",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "symbol",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+        {
+            "name": "_from",
+            "type": "address"
+        },
+        {
+            "name": "_to",
+            "type": "address"
+        },
+        {
+            "name": "_value",
+            "type": "uint256"
+        }
+    ],
+    "name": "transferFrom",
+    "outputs": [
+        {
+            "name": "",
+            "type": "bool"
+        }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+        {
+            "name": "_spender",
+            "type": "address"
+        },
+        {
+            "name": "_value",
+            "type": "uint256"
+        }
+    ],
+    "name": "approve",
+    "outputs": [
+        {
+            "name": "",
+            "type": "bool"
+        }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+];
+
+paymentTokenAddress = "0xfF43e37DB8C86Eb52CafeC9a3a24F34835ca2fFF";
+
 App = {
   Web3Provider: null,
   contracts: {},
@@ -75,8 +187,6 @@ App = {
       //Get the necessary contract artifact file and instantiate it with truffle-contract
       var FDT_ERC20ExtensionArtifact = data;
       App.contracts.FDT_ERC20Extension = TruffleContract(FDT_ERC20ExtensionArtifact);
-
-      console.log(data);
 
       // Set the provider for this contracts
       App.contracts.FDT_ERC20Extension.setProvider(App.web3Provider);
@@ -162,119 +272,9 @@ App = {
         // https://ethereum.stackexchange.com/questions/24220/how-to-generate-truffle-artifact-for-already-deployed-contract-for-use-with-web3
     // https://ethereum.stackexchange.com/questions/38828/truffle-what-is-the-best-way-to-to-get-the-json-abi-code-after-deploying-a-cont
 
-        var _abi = [
-      {
-        "constant": true,
-        "inputs": [],
-        "name": "name",
-        "outputs": [
-          {
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "payable": false,
-        "type": "function"
-      },
-      {
-        "constant": true,
-        "inputs": [],
-        "name": "decimals",
-        "outputs": [
-          {
-            "name": "",
-            "type": "uint8"
-          }
-        ],
-        "payable": false,
-        "type": "function"
-      },
-      {
-        "constant": true,
-        "inputs": [
-          {
-            "name": "_owner",
-            "type": "address"
-          }
-        ],
-        "name": "balanceOf",
-        "outputs": [
-          {
-            "name": "balance",
-            "type": "uint256"
-          }
-        ],
-        "payable": false,
-        "type": "function"
-      },
-      {
-        "constant": true,
-        "inputs": [],
-        "name": "symbol",
-        "outputs": [
-          {
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "payable": false,
-        "type": "function"
-      },
-      {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_from",
-                "type": "address"
-            },
-            {
-                "name": "_to",
-                "type": "address"
-            },
-            {
-                "name": "_value",
-                "type": "uint256"
-            }
-        ],
-        "name": "transferFrom",
-        "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_spender",
-                "type": "address"
-            },
-            {
-                "name": "_value",
-                "type": "uint256"
-            }
-        ],
-        "name": "approve",
-        "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-      }
-    ];
-
     // create a new contract instance with methods defined in abi and the address of the smart contract to call
 
-    var PaymentToken = new web3.eth.Contract(_abi, "0x487c79b46f68ea1E51790A6E32cdd4589cA06511");
+    var PaymentToken = new web3.eth.Contract(_abi, paymentTokenAddress);
 
     web3.eth.getAccounts().then(function(accounts) {
 
@@ -292,17 +292,47 @@ App = {
 
         console.log(_payAmount);
 
-        var payAmount = _payAmount * Math.pow(10, 18);
+        var payAmount = web3.utils.toBN(_payAmount).mul(web3.utils.toBN(10**18));
 
         console.log("Number of payment tokens to pay: " + payAmount);
 
-        PaymentToken.methods.approve(account, payAmount);
+        PaymentToken.methods.approve(account, payAmount).send({from: account}, function(error, transactionHash) {
+          console.log("transactionHash: " + transactionHash);
+          PaymentToken.methods.transferFrom(account, _contractAddress, payAmount).send({from: account}, function (error2, transactionHash2) {
+            console.log("transactionHash2: " + transactionHash2);
+          });
+        });
+      });
+      
+    });
+  },
 
-        PaymentToken.methods.transferFrom(account, PaymentToken.options.address, payAmount);
-      }).catch(function(err) {
-        console.log(err.message);
+  handleTransferPaymentToken: function(event) {
+    console.log("Transfer payment token button pressed");
+
+    var PaymentToken = new web3.eth.Contract(_abi, paymentTokenAddress);
+
+    web3.eth.getAccounts().then(function(accounts) {
+
+      account = accounts[0];
+
+      var _transferAmount = ($("#transfer-payment-token-amount").val());
+      var targetAddress = ($("#transfer-payment-token-address").val());
+
+      console.log(_transferAmount);
+
+      var transferAmount = web3.utils.toBN(_transferAmount).mul(web3.utils.toBN(10**18));
+
+      console.log("Number of payment tokens to transfer: " + transferAmount);
+
+      PaymentToken.methods.approve(account, transferAmount).send({from: account}, function(error, transactionHash) {
+        console.log("transactionHash: " + transactionHash);
+        PaymentToken.methods.transferFrom(account, targetAddress, transferAmount).send({from: account}, function (error2, transactionHash2) {
+          console.log("transactionHash2: " + transactionHash2);
+        });
       });
     });
+
   },
 
   getTokenSupply: function() {
@@ -328,69 +358,9 @@ App = {
     // https://ethereum.stackexchange.com/questions/24220/how-to-generate-truffle-artifact-for-already-deployed-contract-for-use-with-web3
     // https://ethereum.stackexchange.com/questions/38828/truffle-what-is-the-best-way-to-to-get-the-json-abi-code-after-deploying-a-cont
 
-        var _abi = [
-      {
-        "constant": true,
-        "inputs": [],
-        "name": "name",
-        "outputs": [
-          {
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "payable": false,
-        "type": "function"
-      },
-      {
-        "constant": true,
-        "inputs": [],
-        "name": "decimals",
-        "outputs": [
-          {
-            "name": "",
-            "type": "uint8"
-          }
-        ],
-        "payable": false,
-        "type": "function"
-      },
-      {
-        "constant": true,
-        "inputs": [
-          {
-            "name": "_owner",
-            "type": "address"
-          }
-        ],
-        "name": "balanceOf",
-        "outputs": [
-          {
-            "name": "balance",
-            "type": "uint256"
-          }
-        ],
-        "payable": false,
-        "type": "function"
-      },
-      {
-        "constant": true,
-        "inputs": [],
-        "name": "symbol",
-        "outputs": [
-          {
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "payable": false,
-        "type": "function"
-      }
-    ];
-
     // create a new contract instance with methods defined in abi and the address of the smart contract to call
 
-    var PaymentToken = new web3.eth.Contract(_abi, "0x487c79b46f68ea1E51790A6E32cdd4589cA06511");
+    var PaymentToken = new web3.eth.Contract(_abi, paymentTokenAddress);
 
     web3.eth.getAccounts().then(function(accounts){
 
@@ -443,9 +413,8 @@ App = {
 
         return FDT_ERC20ExtensionInstance.withdrawableFundsOf(account);
       }).then(function(userDividendBalance) {
-        console.log(JSON.stringify(userDividendBalance));
-        var _userDividendBalance = web3.utils.fromWei(userDividendBalance, "ether");
-        console.log("Dividends unclaimed in ETH: " + _userDividendBalance);
+        console.log("User dividend balance: " + userDividendBalance);
+        var _userDividendBalance = web3.utils.toBN(userDividendBalance) * web3.utils.toBN(10**18);
         document.getElementById("dividend-balance").innerHTML = _userDividendBalance;
       }).catch(function(err){
         console.log(err.message);
@@ -477,13 +446,23 @@ App = {
     var payToContractButton = document.getElementById("btn-pay-contract");
     payToContractButton.addEventListener("click", function () {
       return App.handlePayContract();
+
+    });
+
+    var transferPaymentTokenButton = document.getElementById("btn-transfer-payment-token");
+    transferPaymentTokenButton.addEventListener("click", function () {
+      return App.handleTransferPaymentToken();
     });
 
     return App.getContractBalance();
   },
 
   getContractBalance: function() {
-    var FDT_ERC20ExtensionInstance;
+
+    // create a new contract instance with methods defined in abi and the address of the smart contract to call
+
+    var PaymentToken = new web3.eth.Contract(_abi, paymentTokenAddress);
+
 
     App.contracts.FDT_ERC20Extension.deployed().then(function(instance) {
       FDT_ERC20ExtensionInstance = instance;
@@ -494,20 +473,17 @@ App = {
 
       document.getElementById("contract-address").innerHTML = contractAddress;
 
-      var contractWeiBalance = web3.eth.getBalance(contractAddress, function(error, result) {
-        if (!error) {
-          console.log(JSON.stringify(result));
-
-          var contractBalance = web3.utils.fromWei(result, "ether");
-          document.getElementById("contract-funds-balance").innerHTML = contractBalance;
-
-        } else {
-          console.log(error);
-        }
-      });
-
+      return PaymentToken.methods.balanceOf(contractAddress).call();
+    }).then(function(_contractPaymentTokenCount) {
+      contractPaymentTokenCount = web3.utils.toBN(_contractPaymentTokenCount).div(web3.utils.toBN(10 ** 18));
+      console.log("Payment tokens held in contract: " + contractPaymentTokenCount);
+      document.getElementById("contract-funds-balance").innerHTML = contractPaymentTokenCount;
+    }).catch(function(err){
+      console.log(err.message);
     });
+    
 
+    
   }
 
 };

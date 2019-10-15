@@ -5667,7 +5667,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-10-14T14:49:05.849Z",
+  "updatedAt": "2019-10-15T14:57:13.852Z",
   "devdoc": {
     "details": "Math operations with safety checks that revert on error\rSafeMath adapted for int256\r Based on code of  https://github.com/RequestNetwork/requestNetwork/blob/master/packages/requestNetworkSmartContracts/contracts/base/math/SafeMathInt.sol\r",
     "methods": {},
