@@ -59,7 +59,19 @@ contract FDT_ERC20Extension is IFundsDistributionToken, FundsDistributionToken {
 		
 		fundsTokenBalance = fundsToken.balanceOf(address(this));
 
-		return int256(fundsTokenBalance).sub(int256(prevFundsTokenBalance));
+		if (prevFundsTokenBalance > fundsTokenBalance) {
+			return int256(prevFundsTokenBalance).sub(int256(fundsTokenBalance));
+		} 
+
+		else if (fundsTokenBalance > prevFundsTokenBalance) {
+			return int256(fundsTokenBalance).sub(int256(prevFundsTokenBalance));
+		} 
+
+		else {
+			return 0;
+		}
+
+		
 	}
 
 	/**
@@ -67,7 +79,7 @@ contract FDT_ERC20Extension is IFundsDistributionToken, FundsDistributionToken {
 	 * @dev Calls _updateFundsTokenBalance(), whereby the contract computes the delta of the previous and the new 
 	 * funds token balance and increments the total received funds (cumulative) by delta by calling _registerFunds()
 	 */
-	function updateFundsReceived() internal {
+	function updateFundsReceived() external {
 		int256 newFunds = _updateFundsTokenBalance();
 
 		if (newFunds > 0) {
@@ -87,7 +99,7 @@ contract FDT_ERC20Extension is IFundsDistributionToken, FundsDistributionToken {
 		require(fundsToken.allowance(msg.sender, address(this)) > 0);
 		uint256 amount = fundsToken.allowance(msg.sender, address(this));
 		require(fundsToken.transferFrom(msg.sender, address(this), amount));
-		updateFundsReceived();
-
 	}
+
+
 }

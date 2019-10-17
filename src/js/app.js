@@ -137,7 +137,7 @@ var _abi = [
   }
 ];
 
-paymentTokenAddress = "0xfF43e37DB8C86Eb52CafeC9a3a24F34835ca2fFF";
+paymentTokenAddress = "0x5e34e72EA0138A8EDE71D5F8B7f8ED1549d62b58";
 
 App = {
   Web3Provider: null,
@@ -190,7 +190,6 @@ App = {
 
       // Set the provider for this contracts
       App.contracts.FDT_ERC20Extension.setProvider(App.web3Provider);
-
 
       return App.getTokenSupply();
     });
@@ -300,7 +299,11 @@ App = {
           console.log("transactionHash: " + transactionHash);
           PaymentToken.methods.transferFrom(account, _contractAddress, payAmount).send({from: account}, function (error2, transactionHash2) {
             console.log("transactionHash2: " + transactionHash2);
+            FDT_ERC20ExtensionInstance.updateFundsReceived({from: account});
           });
+
+          
+
         });
       });
       
@@ -370,7 +373,7 @@ App = {
 
       return PaymentToken.methods.balanceOf(account).call();
     }).then(function(_userPaymentTokenCount) {
-      userPaymentTokenCount = _userPaymentTokenCount / Math.pow(10, 18);
+      userPaymentTokenCount = web3.utils.toBN(_userPaymentTokenCount).div(web3.utils.toBN(10 ** 18));
       console.log("Payment tokens held in this wallet: " + userPaymentTokenCount);
       document.getElementById("payment-token-balance").innerHTML = userPaymentTokenCount;
     }).catch(function(err){
@@ -414,7 +417,7 @@ App = {
         return FDT_ERC20ExtensionInstance.withdrawableFundsOf(account);
       }).then(function(userDividendBalance) {
         console.log("User dividend balance: " + userDividendBalance);
-        var _userDividendBalance = web3.utils.toBN(userDividendBalance) * web3.utils.toBN(10**18);
+        var _userDividendBalance = web3.utils.toBN(userDividendBalance).div(web3.utils.toBN(10**18));
         document.getElementById("dividend-balance").innerHTML = _userDividendBalance;
       }).catch(function(err){
         console.log(err.message);
@@ -473,6 +476,8 @@ App = {
 
       document.getElementById("contract-address").innerHTML = contractAddress;
 
+
+
       return PaymentToken.methods.balanceOf(contractAddress).call();
     }).then(function(_contractPaymentTokenCount) {
       contractPaymentTokenCount = web3.utils.toBN(_contractPaymentTokenCount).div(web3.utils.toBN(10 ** 18));
@@ -482,6 +487,7 @@ App = {
       console.log(err.message);
     });
     
+
 
     
   }
