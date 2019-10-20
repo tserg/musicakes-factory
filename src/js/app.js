@@ -137,7 +137,7 @@ var _abi = [
   }
 ];
 
-paymentTokenAddress = "0x5e34e72EA0138A8EDE71D5F8B7f8ED1549d62b58";
+paymentTokenAddress = "0x841D4197A1dB5966B1b18A9563c11d81E9f001E6";
 
 App = {
   Web3Provider: null,
@@ -199,31 +199,9 @@ App = {
 
 
 
-  handleMintTokens: function(event) {
+  handleTransferFDT: function(event) {
 
-    console.log("Mint Button pressed");
-
-    var FDT_ERC20ExtensionInstance;
-
-    web3.eth.getAccounts().then(function(accounts) {
-
-      account = accounts[0];
-
-      App.contracts.FDT_ERC20Extension.deployed().then(function(instance) {
-        FDT_ERC20ExtensionInstance = instance;
-
-        return FDT_ERC20ExtensionInstance.mint($("#mint-token-address").val(), $("#mint-token-amount").val(), {from: account});
-      }).catch(function(err) {
-        console.log(err.message);
-      });
-    });
-
-
-  },
-
-  handleAddMinter: function(event) {
-
-    console.log("Button pressed");
+    console.log("Transfer FDT Button pressed");
 
     var FDT_ERC20ExtensionInstance;
 
@@ -234,11 +212,13 @@ App = {
       App.contracts.FDT_ERC20Extension.deployed().then(function(instance) {
         FDT_ERC20ExtensionInstance = instance;
 
-        return FDT_ERC20ExtensionInstance.addMinter($("#new-minter-address").val(), {from: account});
+        return FDT_ERC20ExtensionInstance.transfer($("#transfer-FDT-address").val(), $("#transfer-FDT-amount").val(), {from: account});
       }).catch(function(err) {
         console.log(err.message);
       });
     });
+
+
   },
 
 
@@ -425,21 +405,15 @@ App = {
 
     });
 
-    return App.getMinterDashboard();
+    return App.getTokenManagementDashboard();
   },
 
-  getMinterDashboard: function() {
+  getTokenManagementDashboard: function() {
 
-    var mintButton = document.getElementById("btn-mint-tokens");
-    mintButton.addEventListener("click", function() {
-      return App.handleMintTokens();
+    var transferFDTButton = document.getElementById("btn-transfer-FDT");
+    transferFDTButton.addEventListener("click", function() {
+      return App.handleTransferFDT();
     });
-
-    var addMinterButton = document.getElementById("btn-add-minter");
-    addMinterButton.addEventListener("click", function () {
-      return App.handleAddMinter();
-    });
-
 
     var claimDividendsButton = document.getElementById("btn-claim-dividends");
     claimDividendsButton.addEventListener("click", function () {
