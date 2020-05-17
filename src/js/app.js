@@ -274,7 +274,7 @@ App = {
         var payAmount = web3.utils.toBN(_payAmount).mul(web3.utils.toBN(10**18));
 
         console.log("Number of payment tokens to pay: " + payAmount);
-
+        /*
         PaymentToken.methods.approve(account, payAmount).send({from: account}, function(error, transactionHash) {
           console.log("transactionHash: " + transactionHash);
           PaymentToken.methods.transferFrom(account, _contractAddress, payAmount).send({from: account}, function (error2, transactionHash2) {
@@ -285,6 +285,43 @@ App = {
           
 
         });
+
+        */
+
+        PaymentToken.methods.approve(account, payAmount).send({from: account})
+        .once('transactionHash', function(hash) {
+          console.log("Transaction hash: " + hash);
+        })
+        .once('receipt', function(receipt) {
+          console.log(receipt);
+        })
+        .on('confirmation', function(confNumber) {
+          console.log(confNumber);
+        })
+        .on('error', function(error) {
+          console.log(error);
+        })
+        .then(function(receipt) {
+          PaymentToken.methods.transferFrom(account, _contractAddress, payAmount).send({from: account})
+          .once('transactionHash', function(hash2) {
+            console.log("Transaction hash 2: " + hash2);
+          })
+          .once('receipt', function(receipt2) {
+            console.log(receipt2);
+          })
+          .on('confirmation', function(confNumber2) {
+            console.log(confNumber2);
+          })
+          .on('error', function(error) {
+            console.log(error);
+          })
+          .then(function(receipt2) {
+            console.log("This function is triggered");
+            FDT_ERC20ExtensionInstance.updateFundsReceived({from: account});
+          });
+        });
+
+
       });
       
     });
@@ -373,7 +410,7 @@ App = {
 
       return PaymentToken.methods.balanceOf(account).call();
     }).then(function(_userPaymentTokenCount) {
-      userPaymentTokenCount = web3.utils.toBN(_userPaymentTokenCount).div(web3.utils.toBN(10 ** 18));
+      userPaymentTokenCount = (parseFloat(_userPaymentTokenCount)/parseFloat(10**18)).toFixed(18);
       console.log("Payment tokens held in this wallet: " + userPaymentTokenCount);
       document.getElementById("payment-token-balance").innerHTML = userPaymentTokenCount;
     }).catch(function(err){
@@ -417,7 +454,7 @@ App = {
         return FDT_ERC20ExtensionInstance.withdrawableFundsOf(account);
       }).then(function(userDividendBalance) {
         console.log("User dividend balance: " + userDividendBalance);
-        var _userDividendBalance = web3.utils.toBN(userDividendBalance).div(web3.utils.toBN(10**18));
+        var _userDividendBalance = (parseFloat(userDividendBalance)/parseFloat(10**18)).toFixed(18);
         document.getElementById("dividend-balance").innerHTML = _userDividendBalance;
       }).catch(function(err){
         console.log(err.message);
@@ -479,7 +516,7 @@ App = {
 
       return PaymentToken.methods.balanceOf(contractAddress).call();
     }).then(function(_contractPaymentTokenCount) {
-      contractPaymentTokenCount = web3.utils.toBN(_contractPaymentTokenCount).div(web3.utils.toBN(10 ** 18));
+      contractPaymentTokenCount = (parseFloat(_contractPaymentTokenCount)/parseFloat(10**18)).toFixed(18);
       console.log("Payment tokens held in contract: " + contractPaymentTokenCount);
       document.getElementById("contract-funds-balance").innerHTML = contractPaymentTokenCount;
     }).catch(function(err){
