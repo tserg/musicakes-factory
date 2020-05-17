@@ -42,6 +42,12 @@ contract FDT_ERC20Extension is IFundsDistributionToken, FundsDistributionToken {
 	function withdrawFunds() 
 		external 
 	{
+		int256 newFunds = _updateFundsTokenBalance();
+
+		if (newFunds > 0) {
+			_distributeFunds(newFunds.toUint256Safe());
+		}
+		
 		uint256 withdrawableFunds = _prepareWithdraw();
 		
 		require(fundsToken.transfer(msg.sender, withdrawableFunds), "FDT_ERC20Extension.withdrawFunds: TRANSFER_FAILED");
@@ -96,9 +102,11 @@ contract FDT_ERC20Extension is IFundsDistributionToken, FundsDistributionToken {
 	function payToContract()
 		external
 	{
+
 		require(fundsToken.allowance(msg.sender, address(this)) > 0);
 		uint256 amount = fundsToken.allowance(msg.sender, address(this));
 		require(fundsToken.transferFrom(msg.sender, address(this), amount));
+
 	}
 
 
