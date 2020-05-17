@@ -1391,9 +1391,15 @@
       "transactionHash": "0x1663b24b08858a8e5d970a746f8842c1b48b169a9a3eb40239aab81b772cdeb2"
     }
   },
+<<<<<<< HEAD
   "schemaVersion": "3.1.0",
   "updatedAt": "2020-05-17T07:17:37.802Z",
   "networkType": "ethereum",
+=======
+  "networks": {},
+  "schemaVersion": "3.0.2",
+  "updatedAt": "2019-10-20T15:51:35.355Z",
+>>>>>>> origin/master
   "devdoc": {
     "methods": {}
   },
