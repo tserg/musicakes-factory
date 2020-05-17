@@ -6,38 +6,19 @@
       "inputs": [
         {
           "indexed": true,
-          "name": "from",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "to",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "value",
-          "type": "uint256"
-        }
-      ],
-      "name": "Transfer",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
+          "internalType": "address",
           "name": "owner",
           "type": "address"
         },
         {
           "indexed": true,
+          "internalType": "address",
           "name": "spender",
           "type": "address"
         },
         {
           "indexed": false,
+          "internalType": "uint256",
           "name": "value",
           "type": "uint256"
         }
@@ -46,11 +27,37 @@
       "type": "event"
     },
     {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
       "constant": true,
       "inputs": [],
       "name": "totalSupply",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -63,6 +70,7 @@
       "constant": true,
       "inputs": [
         {
+          "internalType": "address",
           "name": "account",
           "type": "address"
         }
@@ -70,6 +78,7 @@
       "name": "balanceOf",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -82,10 +91,12 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "recipient",
           "type": "address"
         },
         {
+          "internalType": "uint256",
           "name": "amount",
           "type": "uint256"
         }
@@ -93,6 +104,7 @@
       "name": "transfer",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -105,10 +117,12 @@
       "constant": true,
       "inputs": [
         {
+          "internalType": "address",
           "name": "owner",
           "type": "address"
         },
         {
+          "internalType": "address",
           "name": "spender",
           "type": "address"
         }
@@ -116,6 +130,7 @@
       "name": "allowance",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -128,10 +143,12 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "spender",
           "type": "address"
         },
         {
+          "internalType": "uint256",
           "name": "amount",
           "type": "uint256"
         }
@@ -139,6 +156,7 @@
       "name": "approve",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -151,14 +169,17 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "sender",
           "type": "address"
         },
         {
+          "internalType": "address",
           "name": "recipient",
           "type": "address"
         },
         {
+          "internalType": "uint256",
           "name": "amount",
           "type": "uint256"
         }
@@ -166,6 +187,7 @@
       "name": "transferFrom",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -175,6 +197,7 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface of the ERC20 standard as defined in the EIP. Does not include the optional functions; to access them see {ERC20Detailed}.\",\"methods\":{\"allowance(address,address)\":{\"details\":\"Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default.      * This value changes when {approve} or {transferFrom} are called.\"},\"approve(address,uint256)\":{\"details\":\"Sets `amount` as the allowance of `spender` over the caller's tokens.      * Returns a boolean value indicating whether the operation succeeded.      * IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729      * Emits an {Approval} event.\"},\"balanceOf(address)\":{\"details\":\"Returns the amount of tokens owned by `account`.\"},\"totalSupply()\":{\"details\":\"Returns the amount of tokens in existence.\"},\"transfer(address,uint256)\":{\"details\":\"Moves `amount` tokens from the caller's account to `recipient`.      * Returns a boolean value indicating whether the operation succeeded.      * Emits a {Transfer} event.\"},\"transferFrom(address,address,uint256)\":{\"details\":\"Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism. `amount` is then deducted from the caller's allowance.      * Returns a boolean value indicating whether the operation succeeded.      * Emits a {Transfer} event.\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/IERC20.sol\":\"IERC20\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/IERC20.sol\":{\"keccak256\":\"0x0026edc82e7b911c32cad4b1a320a13d728d969c78e02707a98ca1afd73564d0\",\"urls\":[\"bzz-raw://ff2cdc716c32001731c4c28b1687a16210787ea9008fc9ccd367e8d5851bf6d4\",\"dweb:/ipfs/QmXfUbLczdXB1EGbH8LQjjUNbh3PpsxuTscXasYPxjxaCJ\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
@@ -206,7 +229,7 @@
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "interface",
-        "documentation": "@dev Interface of the ERC20 standard as defined in the EIP. Does not include\r\nthe optional functions; to access them see {ERC20Detailed}.\r",
+        "documentation": "@dev Interface of the ERC20 standard as defined in the EIP. Does not include\nthe optional functions; to access them see {ERC20Detailed}.",
         "fullyImplemented": false,
         "id": 1781,
         "linearizedBaseContracts": [
@@ -217,7 +240,7 @@
         "nodes": [
           {
             "body": null,
-            "documentation": "@dev Returns the amount of tokens in existence.\r",
+            "documentation": "@dev Returns the amount of tokens in existence.",
             "id": 1719,
             "implemented": false,
             "kind": "function",
@@ -271,7 +294,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Returns the amount of tokens owned by `account`.\r",
+            "documentation": "@dev Returns the amount of tokens owned by `account`.",
             "id": 1726,
             "implemented": false,
             "kind": "function",
@@ -353,7 +376,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Moves `amount` tokens from the caller's account to `recipient`.\r\n\n     * Returns a boolean value indicating whether the operation succeeded.\r\n\n     * Emits a {Transfer} event.\r",
+            "documentation": "@dev Moves `amount` tokens from the caller's account to `recipient`.\n\n     * Returns a boolean value indicating whether the operation succeeded.\n\n     * Emits a {Transfer} event.",
             "id": 1735,
             "implemented": false,
             "kind": "function",
@@ -461,7 +484,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Returns the remaining number of tokens that `spender` will be\r\nallowed to spend on behalf of `owner` through {transferFrom}. This is\r\nzero by default.\r\n\n     * This value changes when {approve} or {transferFrom} are called.\r",
+            "documentation": "@dev Returns the remaining number of tokens that `spender` will be\nallowed to spend on behalf of `owner` through {transferFrom}. This is\nzero by default.\n\n     * This value changes when {approve} or {transferFrom} are called.",
             "id": 1744,
             "implemented": false,
             "kind": "function",
@@ -570,7 +593,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Sets `amount` as the allowance of `spender` over the caller's tokens.\r\n\n     * Returns a boolean value indicating whether the operation succeeded.\r\n\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\r\nthat someone may use both the old and the new allowance by unfortunate\r\ntransaction ordering. One possible solution to mitigate this race\r\ncondition is to first reduce the spender's allowance to 0 and set the\r\ndesired value afterwards:\r\nhttps://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\r\n\n     * Emits an {Approval} event.\r",
+            "documentation": "@dev Sets `amount` as the allowance of `spender` over the caller's tokens.\n\n     * Returns a boolean value indicating whether the operation succeeded.\n\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\nthat someone may use both the old and the new allowance by unfortunate\ntransaction ordering. One possible solution to mitigate this race\ncondition is to first reduce the spender's allowance to 0 and set the\ndesired value afterwards:\nhttps://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\n\n     * Emits an {Approval} event.",
             "id": 1753,
             "implemented": false,
             "kind": "function",
@@ -678,7 +701,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Moves `amount` tokens from `sender` to `recipient` using the\r\nallowance mechanism. `amount` is then deducted from the caller's\r\nallowance.\r\n\n     * Returns a boolean value indicating whether the operation succeeded.\r\n\n     * Emits a {Transfer} event.\r",
+            "documentation": "@dev Moves `amount` tokens from `sender` to `recipient` using the\nallowance mechanism. `amount` is then deducted from the caller's\nallowance.\n\n     * Returns a boolean value indicating whether the operation succeeded.\n\n     * Emits a {Transfer} event.",
             "id": 1764,
             "implemented": false,
             "kind": "function",
@@ -813,7 +836,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when `value` tokens are moved from one account (`from`) to\r\nanother (`to`).\r\n\n     * Note that `value` may be zero.\r",
+            "documentation": "@dev Emitted when `value` tokens are moved from one account (`from`) to\nanother (`to`).\n\n     * Note that `value` may be zero.",
             "id": 1772,
             "name": "Transfer",
             "nodeType": "EventDefinition",
@@ -911,7 +934,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when the allowance of a `spender` for an `owner` is set by\r\na call to {approve}. `value` is the new allowance.\r",
+            "documentation": "@dev Emitted when the allowance of a `spender` for an `owner` is set by\na call to {approve}. `value` is the new allowance.",
             "id": 1780,
             "name": "Approval",
             "nodeType": "EventDefinition",
@@ -1039,7 +1062,7 @@
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "interface",
-        "documentation": "@dev Interface of the ERC20 standard as defined in the EIP. Does not include\r\nthe optional functions; to access them see {ERC20Detailed}.\r",
+        "documentation": "@dev Interface of the ERC20 standard as defined in the EIP. Does not include\nthe optional functions; to access them see {ERC20Detailed}.",
         "fullyImplemented": false,
         "id": 1781,
         "linearizedBaseContracts": [
@@ -1050,7 +1073,7 @@
         "nodes": [
           {
             "body": null,
-            "documentation": "@dev Returns the amount of tokens in existence.\r",
+            "documentation": "@dev Returns the amount of tokens in existence.",
             "id": 1719,
             "implemented": false,
             "kind": "function",
@@ -1104,7 +1127,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Returns the amount of tokens owned by `account`.\r",
+            "documentation": "@dev Returns the amount of tokens owned by `account`.",
             "id": 1726,
             "implemented": false,
             "kind": "function",
@@ -1186,7 +1209,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Moves `amount` tokens from the caller's account to `recipient`.\r\n\n     * Returns a boolean value indicating whether the operation succeeded.\r\n\n     * Emits a {Transfer} event.\r",
+            "documentation": "@dev Moves `amount` tokens from the caller's account to `recipient`.\n\n     * Returns a boolean value indicating whether the operation succeeded.\n\n     * Emits a {Transfer} event.",
             "id": 1735,
             "implemented": false,
             "kind": "function",
@@ -1294,7 +1317,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Returns the remaining number of tokens that `spender` will be\r\nallowed to spend on behalf of `owner` through {transferFrom}. This is\r\nzero by default.\r\n\n     * This value changes when {approve} or {transferFrom} are called.\r",
+            "documentation": "@dev Returns the remaining number of tokens that `spender` will be\nallowed to spend on behalf of `owner` through {transferFrom}. This is\nzero by default.\n\n     * This value changes when {approve} or {transferFrom} are called.",
             "id": 1744,
             "implemented": false,
             "kind": "function",
@@ -1403,7 +1426,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Sets `amount` as the allowance of `spender` over the caller's tokens.\r\n\n     * Returns a boolean value indicating whether the operation succeeded.\r\n\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\r\nthat someone may use both the old and the new allowance by unfortunate\r\ntransaction ordering. One possible solution to mitigate this race\r\ncondition is to first reduce the spender's allowance to 0 and set the\r\ndesired value afterwards:\r\nhttps://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\r\n\n     * Emits an {Approval} event.\r",
+            "documentation": "@dev Sets `amount` as the allowance of `spender` over the caller's tokens.\n\n     * Returns a boolean value indicating whether the operation succeeded.\n\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\nthat someone may use both the old and the new allowance by unfortunate\ntransaction ordering. One possible solution to mitigate this race\ncondition is to first reduce the spender's allowance to 0 and set the\ndesired value afterwards:\nhttps://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\n\n     * Emits an {Approval} event.",
             "id": 1753,
             "implemented": false,
             "kind": "function",
@@ -1511,7 +1534,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Moves `amount` tokens from `sender` to `recipient` using the\r\nallowance mechanism. `amount` is then deducted from the caller's\r\nallowance.\r\n\n     * Returns a boolean value indicating whether the operation succeeded.\r\n\n     * Emits a {Transfer} event.\r",
+            "documentation": "@dev Moves `amount` tokens from `sender` to `recipient` using the\nallowance mechanism. `amount` is then deducted from the caller's\nallowance.\n\n     * Returns a boolean value indicating whether the operation succeeded.\n\n     * Emits a {Transfer} event.",
             "id": 1764,
             "implemented": false,
             "kind": "function",
@@ -1646,7 +1669,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when `value` tokens are moved from one account (`from`) to\r\nanother (`to`).\r\n\n     * Note that `value` may be zero.\r",
+            "documentation": "@dev Emitted when `value` tokens are moved from one account (`from`) to\nanother (`to`).\n\n     * Note that `value` may be zero.",
             "id": 1772,
             "name": "Transfer",
             "nodeType": "EventDefinition",
@@ -1744,7 +1767,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev Emitted when the allowance of a `spender` for an `owner` is set by\r\na call to {approve}. `value` is the new allowance.\r",
+            "documentation": "@dev Emitted when the allowance of a `spender` for an `owner` is set by\na call to {approve}. `value` is the new allowance.",
             "id": 1780,
             "name": "Approval",
             "nodeType": "EventDefinition",
@@ -1849,31 +1872,31 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-10-17T14:20:53.124Z",
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-17T07:17:34.861Z",
   "devdoc": {
-    "details": "Interface of the ERC20 standard as defined in the EIP. Does not include\r the optional functions; to access them see {ERC20Detailed}.\r",
+    "details": "Interface of the ERC20 standard as defined in the EIP. Does not include the optional functions; to access them see {ERC20Detailed}.",
     "methods": {
       "allowance(address,address)": {
-        "details": "Returns the remaining number of tokens that `spender` will be\r allowed to spend on behalf of `owner` through {transferFrom}. This is\r zero by default.\r      * This value changes when {approve} or {transferFrom} are called.\r"
+        "details": "Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default.      * This value changes when {approve} or {transferFrom} are called."
       },
       "approve(address,uint256)": {
-        "details": "Sets `amount` as the allowance of `spender` over the caller's tokens.\r      * Returns a boolean value indicating whether the operation succeeded.\r      * IMPORTANT: Beware that changing an allowance with this method brings the risk\r that someone may use both the old and the new allowance by unfortunate\r transaction ordering. One possible solution to mitigate this race\r condition is to first reduce the spender's allowance to 0 and set the\r desired value afterwards:\r https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\r      * Emits an {Approval} event.\r"
+        "details": "Sets `amount` as the allowance of `spender` over the caller's tokens.      * Returns a boolean value indicating whether the operation succeeded.      * IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729      * Emits an {Approval} event."
       },
       "balanceOf(address)": {
-        "details": "Returns the amount of tokens owned by `account`.\r"
+        "details": "Returns the amount of tokens owned by `account`."
       },
       "totalSupply()": {
-        "details": "Returns the amount of tokens in existence.\r"
+        "details": "Returns the amount of tokens in existence."
       },
       "transfer(address,uint256)": {
-        "details": "Moves `amount` tokens from the caller's account to `recipient`.\r      * Returns a boolean value indicating whether the operation succeeded.\r      * Emits a {Transfer} event.\r"
+        "details": "Moves `amount` tokens from the caller's account to `recipient`.      * Returns a boolean value indicating whether the operation succeeded.      * Emits a {Transfer} event."
       },
       "transferFrom(address,address,uint256)": {
-        "details": "Moves `amount` tokens from `sender` to `recipient` using the\r allowance mechanism. `amount` is then deducted from the caller's\r allowance.\r      * Returns a boolean value indicating whether the operation succeeded.\r      * Emits a {Transfer} event.\r"
+        "details": "Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism. `amount` is then deducted from the caller's allowance.      * Returns a boolean value indicating whether the operation succeeded.      * Emits a {Transfer} event."
       }
     }
   },

@@ -12,6 +12,7 @@
       "inputs": [
         {
           "indexed": true,
+          "internalType": "address",
           "name": "account",
           "type": "address"
         }
@@ -24,6 +25,7 @@
       "inputs": [
         {
           "indexed": true,
+          "internalType": "address",
           "name": "account",
           "type": "address"
         }
@@ -35,6 +37,7 @@
       "constant": true,
       "inputs": [
         {
+          "internalType": "address",
           "name": "account",
           "type": "address"
         }
@@ -42,6 +45,7 @@
       "name": "isMinter",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -54,6 +58,7 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "account",
           "type": "address"
         }
@@ -74,6 +79,7 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"MinterAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"MinterRemoved\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"addMinter\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isMinter\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceMinter\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/access/MinterRole.sol\":\"MinterRole\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/GSN/Context.sol\":{\"keccak256\":\"0x37dc42902efc7989706ffda571ab420f0996a264641ca19c4013c4c267fa083e\",\"urls\":[\"bzz-raw://f165415343a5e04282dd155221fbbaa2f30010016556da422c139509d6abdf3d\",\"dweb:/ipfs/QmY5JGt78QvuEboDrxxvKXjEbzsa3hx1RyKouxoEm8sxSz\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/access/MinterRole.sol\":{\"keccak256\":\"0xbbb2e9faa3f22e29e0ab6e23440bf54b4bb93d7111e699ba29ad38567279fd4f\",\"urls\":[\"bzz-raw://51816f7d05882404bc0dcfb13c99e7cce9fd39d6f3a8f8885534118e25da72d8\",\"dweb:/ipfs/QmZnfmDrZ8HnTnC4Lt8f9WT5DX3Qv6Q1YZCHVY3xa8HxrE\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/access/Roles.sol\":{\"keccak256\":\"0x09f299873ffba456a5f47d822cfb0a58eb7d0b4aad05abf0ff49522b28f06374\",\"urls\":[\"bzz-raw://34e532480b34ecf7fc1c5bb3aa6ed73688b62f8ec2a03fff69ae68eed0bf6b24\",\"dweb:/ipfs/QmTqGNyVvqjj6n8WGXtBjTF15k7YBa4o2ZtUeHDqFNNxGZ\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
@@ -2598,11 +2604,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-10-17T14:20:53.126Z",
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-17T07:17:34.823Z",
   "devdoc": {
     "methods": {}
   },

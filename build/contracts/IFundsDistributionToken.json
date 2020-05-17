@@ -6,11 +6,13 @@
       "inputs": [
         {
           "indexed": true,
+          "internalType": "address",
           "name": "by",
           "type": "address"
         },
         {
           "indexed": false,
+          "internalType": "uint256",
           "name": "fundsDistributed",
           "type": "uint256"
         }
@@ -23,11 +25,13 @@
       "inputs": [
         {
           "indexed": true,
+          "internalType": "address",
           "name": "by",
           "type": "address"
         },
         {
           "indexed": false,
+          "internalType": "uint256",
           "name": "fundsWithdrawn",
           "type": "uint256"
         }
@@ -39,6 +43,7 @@
       "constant": true,
       "inputs": [
         {
+          "internalType": "address",
           "name": "owner",
           "type": "address"
         }
@@ -46,6 +51,7 @@
       "name": "withdrawableFundsOf",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -64,6 +70,7 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"by\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fundsDistributed\",\"type\":\"uint256\"}],\"name\":\"FundsDistributed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"by\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fundsWithdrawn\",\"type\":\"uint256\"}],\"name\":\"FundsWithdrawn\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[],\"name\":\"withdrawFunds\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"withdrawableFundsOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"withdrawFunds()\":{\"details\":\"Withdraws all available funds for a FundsDistributionToken holder.\"},\"withdrawableFundsOf(address)\":{\"details\":\"Returns the total amount of funds a given address is able to withdraw currently.\",\"params\":{\"owner\":\"Address of FundsDistributionToken holder\"},\"return\":\"A uint256 representing the available funds for a given account\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/IFundsDistributionToken.sol\":\"IFundsDistributionToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/IFundsDistributionToken.sol\":{\"keccak256\":\"0xe6a8062dbb957a996752bb65e566060d61b16cfa71a95a7c88c2528c8e361e29\",\"urls\":[\"bzz-raw://890db0e42e243f8a09b8b7cb503166112091b6d139a5addfcf7f32e1f026418c\",\"dweb:/ipfs/QmYMmAvsiGPWQm9kGrbpNZkmFZ2MsiK1NzN82YWPfwGzAv\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
@@ -106,7 +113,7 @@
         "nodes": [
           {
             "body": null,
-            "documentation": "@dev Returns the total amount of funds a given address is able to withdraw currently.\r\n@param owner Address of FundsDistributionToken holder\r\n@return A uint256 representing the available funds for a given account\r",
+            "documentation": "@dev Returns the total amount of funds a given address is able to withdraw currently.\n@param owner Address of FundsDistributionToken holder\n@return A uint256 representing the available funds for a given account",
             "id": 496,
             "implemented": false,
             "kind": "function",
@@ -188,7 +195,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Withdraws all available funds for a FundsDistributionToken holder.\r",
+            "documentation": "@dev Withdraws all available funds for a FundsDistributionToken holder.",
             "id": 499,
             "implemented": false,
             "kind": "function",
@@ -215,7 +222,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev This event emits when new funds are distributed\r\n@param by the address of the sender who distributed funds\r\n@param fundsDistributed the amount of funds received for distribution\r",
+            "documentation": "@dev This event emits when new funds are distributed\n@param by the address of the sender who distributed funds\n@param fundsDistributed the amount of funds received for distribution",
             "id": 505,
             "name": "FundsDistributed",
             "nodeType": "EventDefinition",
@@ -285,7 +292,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev This event emits when distributed funds are withdrawn by a token holder.\r\n@param by the address of the receiver of funds\r\n@param fundsWithdrawn the amount of funds that were withdrawn\r",
+            "documentation": "@dev This event emits when distributed funds are withdrawn by a token holder.\n@param by the address of the receiver of funds\n@param fundsWithdrawn the amount of funds that were withdrawn",
             "id": 511,
             "name": "FundsWithdrawn",
             "nodeType": "EventDefinition",
@@ -396,7 +403,7 @@
         "nodes": [
           {
             "body": null,
-            "documentation": "@dev Returns the total amount of funds a given address is able to withdraw currently.\r\n@param owner Address of FundsDistributionToken holder\r\n@return A uint256 representing the available funds for a given account\r",
+            "documentation": "@dev Returns the total amount of funds a given address is able to withdraw currently.\n@param owner Address of FundsDistributionToken holder\n@return A uint256 representing the available funds for a given account",
             "id": 496,
             "implemented": false,
             "kind": "function",
@@ -478,7 +485,7 @@
           },
           {
             "body": null,
-            "documentation": "@dev Withdraws all available funds for a FundsDistributionToken holder.\r",
+            "documentation": "@dev Withdraws all available funds for a FundsDistributionToken holder.",
             "id": 499,
             "implemented": false,
             "kind": "function",
@@ -505,7 +512,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev This event emits when new funds are distributed\r\n@param by the address of the sender who distributed funds\r\n@param fundsDistributed the amount of funds received for distribution\r",
+            "documentation": "@dev This event emits when new funds are distributed\n@param by the address of the sender who distributed funds\n@param fundsDistributed the amount of funds received for distribution",
             "id": 505,
             "name": "FundsDistributed",
             "nodeType": "EventDefinition",
@@ -575,7 +582,7 @@
           },
           {
             "anonymous": false,
-            "documentation": "@dev This event emits when distributed funds are withdrawn by a token holder.\r\n@param by the address of the receiver of funds\r\n@param fundsWithdrawn the amount of funds that were withdrawn\r",
+            "documentation": "@dev This event emits when distributed funds are withdrawn by a token holder.\n@param by the address of the receiver of funds\n@param fundsWithdrawn the amount of funds that were withdrawn",
             "id": 511,
             "name": "FundsWithdrawn",
             "nodeType": "EventDefinition",
@@ -652,22 +659,22 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-10-17T14:20:53.116Z",
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-17T07:17:34.810Z",
   "devdoc": {
     "methods": {
       "withdrawFunds()": {
-        "details": "Withdraws all available funds for a FundsDistributionToken holder.\r"
+        "details": "Withdraws all available funds for a FundsDistributionToken holder."
       },
       "withdrawableFundsOf(address)": {
-        "details": "Returns the total amount of funds a given address is able to withdraw currently.\r",
+        "details": "Returns the total amount of funds a given address is able to withdraw currently.",
         "params": {
-          "owner": "Address of FundsDistributionToken holder\r"
+          "owner": "Address of FundsDistributionToken holder"
         },
-        "return": "A uint256 representing the available funds for a given account\r"
+        "return": "A uint256 representing the available funds for a given account"
       }
     }
   },

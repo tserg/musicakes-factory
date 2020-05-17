@@ -8,6 +8,7 @@
       "type": "constructor"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/GSN/Context.sol\":\"Context\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/GSN/Context.sol\":{\"keccak256\":\"0x37dc42902efc7989706ffda571ab420f0996a264641ca19c4013c4c267fa083e\",\"urls\":[\"bzz-raw://f165415343a5e04282dd155221fbbaa2f30010016556da422c139509d6abdf3d\",\"dweb:/ipfs/QmY5JGt78QvuEboDrxxvKXjEbzsa3hx1RyKouxoEm8sxSz\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
@@ -189,7 +190,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1819,
+                    "referencedDeclaration": 1820,
                     "src": "980:4:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$627",
@@ -471,7 +472,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1819,
+                    "referencedDeclaration": 1820,
                     "src": "980:4:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$627",
@@ -580,11 +581,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-10-17T14:20:53.116Z",
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-17T07:17:34.820Z",
   "devdoc": {
     "methods": {}
   },

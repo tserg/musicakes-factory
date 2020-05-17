@@ -43,16 +43,23 @@
         <span id = "account_balance"></span>
       </div>
 
+      <div id="status_display">
+        <span>Account status: </span>
+        <span id ="account_status"></span>
+      </div>
+
+      <br>
+
+
+    </div>
+
+    <div id ="payment-token-dashboard" class="dashboard">
+
+      <h3>Payment Token Dashboard</h3>
       <div id="payment-token-balance-display">
         <span>Current payment token balance: </span>
         <span id ="payment-token-balance"></span>
       </div>
-
-      <div id = "user-token-count-display">
-        <span>Number of tokens held in this wallet: </span>
-        <span id = "user-token-count"></span>
-      </div>
-
 
       <div>
 
@@ -69,24 +76,40 @@
       <div id="transfer-payment-token-section">
         <button type="button" id="btn-transfer-payment-token">Transfer</button>
       </div>
+      <div>
 
+        <span>Pay payment tokens to token contract: </span>
+        <input type="text" size=50 id="pay-contract-amount">
 
-      <div id="status_display">
-        <span>Account status: </span>
-        <span id ="account_status"></span>
       </div>
 
-      <br>
+      <div>
 
+        <button type="button" id="btn-pay-contract">Pay</button>
+
+      </div>
+
+
+
+    </div>
+
+    <div id = "fdt-dashboard" class = "dashboard">
+      <h3>FDT Dashboard</h3>
       <div id = "contract-address-display">
         <span>Contract address: </span>
         <span id = "contract-address"></span>
       </div>
 
       <div id = "token-supply-display">
-        <span>Total supply of tokens: </span>
+        <span>Total supply of FDT: </span>
         <span id = "token-supply"></span>
       </div>
+
+      <div id = "user-token-count-display">
+        <span>Number of FDT held in this wallet: </span>
+        <span id = "user-token-count"></span>
+      </div>
+
 
       <div id = "contract-funds-display">
         <span>Payment token balance in token contract: </span>
@@ -101,9 +124,6 @@
       <div id="claim-dividends-section">
         <button type="button" id="btn-claim-dividends">Claim Dividends</button>
       </div>
-
-
-
     </div>
 
     <div id = "minter-dashboard" class = "dashboard">
@@ -116,14 +136,14 @@
 
       <div>
 
-        <span>Address to mint: </span>
+        <span>Address to mint FDT: </span>
         <input type="text" size=50 id="mint-token-address">
 
       </div>
       
       <div>
 
-        <span>Number of tokens to mint: </span>
+        <span>Number of FDT to mint: </span>
         <input type="text" size=50 id="mint-token-amount">
 
       </div>
@@ -136,7 +156,7 @@
 
       <div>
 
-        <span>Address to add as minter: </span>
+        <span>Address to add as FDT minter: </span>
         <input type="text" size=50 id="new-minter-address">
 
       </div>
@@ -144,19 +164,6 @@
       <div>
 
         <button type="button" id="btn-add-minter">Add Minter</button>
-
-      </div>
-
-      <div>
-
-        <span>Pay payment tokens to token contract: </span>
-        <input type="text" size=50 id="pay-contract-amount">
-
-      </div>
-
-      <div>
-
-        <button type="button" id="btn-pay-contract">Pay</button>
 
       </div>
 

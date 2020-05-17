@@ -2,13 +2,171 @@
   "contractName": "FundsDistributionToken",
   "abi": [
     {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "by",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fundsDistributed",
+          "type": "uint256"
+        }
+      ],
+      "name": "FundsDistributed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "by",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fundsWithdrawn",
+          "type": "uint256"
+        }
+      ],
+      "name": "FundsWithdrawn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "MinterAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "MinterRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "addMinter",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "constant": true,
-      "inputs": [],
-      "name": "name",
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
-          "type": "string"
+          "type": "uint256"
         }
       ],
       "payable": false,
@@ -19,10 +177,12 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "spender",
           "type": "address"
         },
         {
+          "internalType": "uint256",
           "name": "amount",
           "type": "uint256"
         }
@@ -30,6 +190,142 @@
       "name": "approve",
       "outputs": [
         {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "subtractedValue",
+          "type": "uint256"
+        }
+      ],
+      "name": "decreaseAllowance",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "addedValue",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseAllowance",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "isMinter",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [
+        {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -41,9 +337,49 @@
     {
       "constant": true,
       "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceMinter",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
       "name": "totalSupply",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -56,14 +392,43 @@
       "constant": false,
       "inputs": [
         {
-          "name": "sender",
-          "type": "address"
-        },
-        {
+          "internalType": "address",
           "name": "recipient",
           "type": "address"
         },
         {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
           "name": "amount",
           "type": "uint256"
         }
@@ -71,6 +436,7 @@
       "name": "transferFrom",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -90,329 +456,9 @@
     },
     {
       "constant": true,
-      "inputs": [],
-      "name": "decimals",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint8"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
       "inputs": [
         {
-          "name": "spender",
-          "type": "address"
-        },
-        {
-          "name": "addedValue",
-          "type": "uint256"
-        }
-      ],
-      "name": "increaseAllowance",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "account",
-          "type": "address"
-        },
-        {
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "mint",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "balanceOf",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "symbol",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "addMinter",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [],
-      "name": "renounceMinter",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "spender",
-          "type": "address"
-        },
-        {
-          "name": "subtractedValue",
-          "type": "uint256"
-        }
-      ],
-      "name": "decreaseAllowance",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "recipient",
-          "type": "address"
-        },
-        {
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "transfer",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "isMinter",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "owner",
-          "type": "address"
-        },
-        {
-          "name": "spender",
-          "type": "address"
-        }
-      ],
-      "name": "allowance",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "name": "symbol",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "MinterAdded",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "MinterRemoved",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "from",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "to",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "value",
-          "type": "uint256"
-        }
-      ],
-      "name": "Transfer",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "owner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "spender",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "value",
-          "type": "uint256"
-        }
-      ],
-      "name": "Approval",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "by",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "fundsDistributed",
-          "type": "uint256"
-        }
-      ],
-      "name": "FundsDistributed",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "by",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "fundsWithdrawn",
-          "type": "uint256"
-        }
-      ],
-      "name": "FundsWithdrawn",
-      "type": "event"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
+          "internalType": "address",
           "name": "_owner",
           "type": "address"
         }
@@ -420,6 +466,7 @@
       "name": "withdrawableFundsOf",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -432,6 +479,7 @@
       "constant": true,
       "inputs": [
         {
+          "internalType": "address",
           "name": "_owner",
           "type": "address"
         }
@@ -439,6 +487,7 @@
       "name": "withdrawnFundsOf",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -451,6 +500,7 @@
       "constant": true,
       "inputs": [
         {
+          "internalType": "address",
           "name": "_owner",
           "type": "address"
         }
@@ -458,6 +508,7 @@
       "name": "accumulativeFundsOf",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -467,6 +518,7 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"symbol\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"by\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fundsDistributed\",\"type\":\"uint256\"}],\"name\":\"FundsDistributed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"by\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fundsWithdrawn\",\"type\":\"uint256\"}],\"name\":\"FundsWithdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"MinterAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"MinterRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"accumulativeFundsOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"addMinter\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subtractedValue\",\"type\":\"uint256\"}],\"name\":\"decreaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"addedValue\",\"type\":\"uint256\"}],\"name\":\"increaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isMinter\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceMinter\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"withdrawFunds\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"withdrawableFundsOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"withdrawnFundsOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Johannes EscherichRoger-WuJohannes PfefferTom Lam\",\"details\":\"A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments,  fee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw  their claims. FundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and  withdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.\",\"methods\":{\"accumulativeFundsOf(address)\":{\"details\":\"accumulativeFundsOf(_owner) = withdrawableFundsOf(_owner) + withdrawnFundsOf(_owner) = (pointsPerShare * balanceOf(_owner) + pointsCorrection[_owner]) / pointsMultiplier\",\"params\":{\"_owner\":\"The address of a token holder.\"},\"return\":\"The amount of funds that `_owner` has earned in total.\"},\"allowance(address,address)\":{\"details\":\"See {IERC20-allowance}.\"},\"approve(address,uint256)\":{\"details\":\"See {IERC20-approve}.      * Requirements:      * - `spender` cannot be the zero address.\"},\"balanceOf(address)\":{\"details\":\"See {IERC20-balanceOf}.\"},\"decimals()\":{\"details\":\"Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5,05` (`505 / 10 ** 2`).      * Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei.      * NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}.\"},\"decreaseAllowance(address,uint256)\":{\"details\":\"Atomically decreases the allowance granted to `spender` by the caller.      * This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}.      * Emits an {Approval} event indicating the updated allowance.      * Requirements:      * - `spender` cannot be the zero address. - `spender` must have allowance for the caller of at least `subtractedValue`.\"},\"increaseAllowance(address,uint256)\":{\"details\":\"Atomically increases the allowance granted to `spender` by the caller.      * This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}.      * Emits an {Approval} event indicating the updated allowance.      * Requirements:      * - `spender` cannot be the zero address.\"},\"mint(address,uint256)\":{\"details\":\"See {ERC20-_mint}.      * Requirements:      * - the caller must have the {MinterRole}.\"},\"name()\":{\"details\":\"Returns the name of the token.\"},\"symbol()\":{\"details\":\"Returns the symbol of the token, usually a shorter version of the name.\"},\"totalSupply()\":{\"details\":\"See {IERC20-totalSupply}.\"},\"transfer(address,uint256)\":{\"details\":\"See {IERC20-transfer}.      * Requirements:      * - `recipient` cannot be the zero address. - the caller must have a balance of at least `amount`.\"},\"transferFrom(address,address,uint256)\":{\"details\":\"See {IERC20-transferFrom}.      * Emits an {Approval} event indicating the updated allowance. This is not required by the EIP. See the note at the beginning of {ERC20};      * Requirements: - `sender` and `recipient` cannot be the zero address. - `sender` must have a balance of at least `amount`. - the caller must have allowance for `sender`'s tokens of at least `amount`.\"},\"withdrawFunds()\":{\"details\":\"Withdraws all available funds for a FundsDistributionToken holder.\"},\"withdrawableFundsOf(address)\":{\"params\":{\"_owner\":\"The address of a token holder.\"},\"return\":\"The amount funds that `_owner` can withdraw.\"},\"withdrawnFundsOf(address)\":{\"params\":{\"_owner\":\"The address of a token holder.\"},\"return\":\"The amount of funds that `_owner` has withdrawn.\"}},\"title\":\"FundsDistributionToken\"},\"userdoc\":{\"methods\":{\"accumulativeFundsOf(address)\":{\"notice\":\"prev. accumulativeDividendOfView the amount of funds that an address has earned in total.\"},\"withdrawableFundsOf(address)\":{\"notice\":\"prev. withdrawableDividendOfView the amount of funds that an address can withdraw.\"},\"withdrawnFundsOf(address)\":{\"notice\":\"prev. withdrawnDividendOfView the amount of funds that an address has withdrawn.\"}}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/FundsDistributionToken.sol\":\"FundsDistributionToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/FundsDistributionToken.sol\":{\"keccak256\":\"0x02c2cc57f03a57e4417d56568728d69b95c5b8c8c914479d368536ecd72581e1\",\"urls\":[\"bzz-raw://d9e4eeed77c126540cc90ad17979ef33b00877cde33a98294032f64196780322\",\"dweb:/ipfs/QmRmKekJhWUp7KEkvud7JnCiq38wLA4oF3mLycCpQDnorW\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/IFundsDistributionToken.sol\":{\"keccak256\":\"0xe6a8062dbb957a996752bb65e566060d61b16cfa71a95a7c88c2528c8e361e29\",\"urls\":[\"bzz-raw://890db0e42e243f8a09b8b7cb503166112091b6d139a5addfcf7f32e1f026418c\",\"dweb:/ipfs/QmYMmAvsiGPWQm9kGrbpNZkmFZ2MsiK1NzN82YWPfwGzAv\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/GSN/Context.sol\":{\"keccak256\":\"0x37dc42902efc7989706ffda571ab420f0996a264641ca19c4013c4c267fa083e\",\"urls\":[\"bzz-raw://f165415343a5e04282dd155221fbbaa2f30010016556da422c139509d6abdf3d\",\"dweb:/ipfs/QmY5JGt78QvuEboDrxxvKXjEbzsa3hx1RyKouxoEm8sxSz\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/access/MinterRole.sol\":{\"keccak256\":\"0xbbb2e9faa3f22e29e0ab6e23440bf54b4bb93d7111e699ba29ad38567279fd4f\",\"urls\":[\"bzz-raw://51816f7d05882404bc0dcfb13c99e7cce9fd39d6f3a8f8885534118e25da72d8\",\"dweb:/ipfs/QmZnfmDrZ8HnTnC4Lt8f9WT5DX3Qv6Q1YZCHVY3xa8HxrE\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/access/Roles.sol\":{\"keccak256\":\"0x09f299873ffba456a5f47d822cfb0a58eb7d0b4aad05abf0ff49522b28f06374\",\"urls\":[\"bzz-raw://34e532480b34ecf7fc1c5bb3aa6ed73688b62f8ec2a03fff69ae68eed0bf6b24\",\"dweb:/ipfs/QmTqGNyVvqjj6n8WGXtBjTF15k7YBa4o2ZtUeHDqFNNxGZ\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/math/SafeMath.sol\":{\"keccak256\":\"0x04bde68e78aa525ff5b6c43a5af030d9446ac8d192927cf3c64600e893381034\",\"urls\":[\"bzz-raw://3b7c3ce008e555520198630ea5516853cf03c0c3cc0c639c8e99b192b68e4a7e\",\"dweb:/ipfs/QmezvSYqBG1VYiFBQtoqQ9k6AcexuETt9hnVYcDqvQUnJ9\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/math/SafeMathInt.sol\":{\"keccak256\":\"0x2aedb3ad40e2af6938f9e417f4d4787170f656402180e5d7f8649568fb0ba7b1\",\"urls\":[\"bzz-raw://19c290ed3d7405b380cb54f428737d7e760a531561a4d6ffba642997e59a3bba\",\"dweb:/ipfs/QmcdsjArk8efFRsGcLM6gmuWVoFPhNi4qJFokSKJzAS78X\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/math/SafeMathUint.sol\":{\"keccak256\":\"0x7cb41d3ecec4f7b96282f37e1d9310cb5069b34d6f5d313afe78c53aa61d296f\",\"urls\":[\"bzz-raw://2900c2e8b3f4f30d5a59f3a79bdc4cb7c6e59945ec8519217bc8b6f92fe38063\",\"dweb:/ipfs/QmNjWPwTtqRUYj1rM1qpJezies4eLMXAcfVitDtMbT3DCT\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/ERC20.sol\":{\"keccak256\":\"0x7280d818991cb51916edd2b4141f916609317028f5ef959ba73b98d0124c2093\",\"urls\":[\"bzz-raw://a65001f46994e1ce298a7f7c9651b9aef967c1980ef16870a8377e6a7375e559\",\"dweb:/ipfs/QmQz5yfaitEBkkTtJyFwjCYP3mQmn2zbDkLpVKrBpzBcw6\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/ERC20Detailed.sol\":{\"keccak256\":\"0x28e916f72e8002b88b787363eb43a07aabcf218cdd7335111cc117dab3a818a0\",\"urls\":[\"bzz-raw://ea6e7b02a24136e39788a0af49ba32c793a59315d24e0ad6a414b6000e48f75b\",\"dweb:/ipfs/QmbbExKYSRUGj4xtQmmWo3Yq7AkbvPJP3cN5QYqwbLCAoi\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/ERC20Mintable.sol\":{\"keccak256\":\"0x763c9dbae1d76a5fc7bfc59050c53e56bbd39707e01a7ffa1faa596f11bd74ef\",\"urls\":[\"bzz-raw://b00038d89fa0bbec39f836be628ff262ee6e9ae3bf2be31a5a644aa09740f155\",\"dweb:/ipfs/QmXirvpbvWoAaWn9HASE18BSHi41EzTtsLLBfyLo7iZh3N\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/IERC20.sol\":{\"keccak256\":\"0x0026edc82e7b911c32cad4b1a320a13d728d969c78e02707a98ca1afd73564d0\",\"urls\":[\"bzz-raw://ff2cdc716c32001731c4c28b1687a16210787ea9008fc9ccd367e8d5851bf6d4\",\"dweb:/ipfs/QmXfUbLczdXB1EGbH8LQjjUNbh3PpsxuTscXasYPxjxaCJ\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
@@ -627,7 +679,7 @@
           1781
         ],
         "contractKind": "contract",
-        "documentation": "@title FundsDistributionToken\r\n@author Johannes Escherich\r\n@author Roger-Wu\r\n@author Johannes Pfeffer\r\n@author Tom Lam\r\n@dev A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments, \r\nfee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw \r\ntheir claims.\r\nFundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and \r\nwithdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.\r",
+        "documentation": "@title FundsDistributionToken\n@author Johannes Escherich\n@author Roger-Wu\n@author Johannes Pfeffer\n@author Tom Lam\n@dev A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments, \nfee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw \ntheir claims.\nFundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and \nwithdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.",
         "fullyImplemented": false,
         "id": 487,
         "linearizedBaseContracts": [
@@ -1560,7 +1612,7 @@
                 }
               ]
             },
-            "documentation": "prev. distributeDividends\r\n@notice Distributes funds to token holders.\r\n@dev It reverts if the total supply of tokens is 0.\r\nIt emits the `FundsDistributed` event if the amount of received ether is greater than 0.\r\nAbout undistributed funds:\r\n  In each distribution, there is a small amount of funds which does not get distributed,\r\n    which is `(msg.value * pointsMultiplier) % totalSupply()`.\r\n  With a well-chosen `pointsMultiplier`, the amount funds that are not getting distributed\r\n    in a distribution can be less than 1 (base unit).\r\n  We can actually keep track of the undistributed ether in a distribution\r\n    and try to distribute it in the next distribution ....... todo implement  \r",
+            "documentation": "prev. distributeDividends\n@notice Distributes funds to token holders.\n@dev It reverts if the total supply of tokens is 0.\nIt emits the `FundsDistributed` event if the amount of received ether is greater than 0.\nAbout undistributed funds:\n  In each distribution, there is a small amount of funds which does not get distributed,\n    which is `(msg.value * pointsMultiplier) % totalSupply()`.\n  With a well-chosen `pointsMultiplier`, the amount funds that are not getting distributed\n    in a distribution can be less than 1 (base unit).\n  We can actually keep track of the undistributed ether in a distribution\n    and try to distribute it in the next distribution ....... todo implement  ",
             "id": 284,
             "implemented": true,
             "kind": "function",
@@ -2011,7 +2063,7 @@
                 }
               ]
             },
-            "documentation": "prev. withdrawDividend\r\n@notice Prepares funds withdrawal\r\n@dev It emits a `FundsWithdrawn` event if the amount of withdrawn ether is greater than 0.\r",
+            "documentation": "prev. withdrawDividend\n@notice Prepares funds withdrawal\n@dev It emits a `FundsWithdrawn` event if the amount of withdrawn ether is greater than 0.",
             "id": 318,
             "implemented": true,
             "kind": "function",
@@ -2205,7 +2257,7 @@
                 }
               ]
             },
-            "documentation": "prev. withdrawableDividendOf\r\n@notice View the amount of funds that an address can withdraw.\r\n@param _owner The address of a token holder.\r\n@return The amount funds that `_owner` can withdraw.\r",
+            "documentation": "prev. withdrawableDividendOf\n@notice View the amount of funds that an address can withdraw.\n@param _owner The address of a token holder.\n@return The amount funds that `_owner` can withdraw.",
             "id": 335,
             "implemented": true,
             "kind": "function",
@@ -2339,7 +2391,7 @@
                 }
               ]
             },
-            "documentation": "prev. withdrawnDividendOf\r\n@notice View the amount of funds that an address has withdrawn.\r\n@param _owner The address of a token holder.\r\n@return The amount of funds that `_owner` has withdrawn.\r",
+            "documentation": "prev. withdrawnDividendOf\n@notice View the amount of funds that an address has withdrawn.\n@param _owner The address of a token holder.\n@return The amount of funds that `_owner` has withdrawn.",
             "id": 347,
             "implemented": true,
             "kind": "function",
@@ -2711,7 +2763,7 @@
                 }
               ]
             },
-            "documentation": "prev. accumulativeDividendOf\r\n@notice View the amount of funds that an address has earned in total.\r\n@dev accumulativeFundsOf(_owner) = withdrawableFundsOf(_owner) + withdrawnFundsOf(_owner)\r\n= (pointsPerShare * balanceOf(_owner) + pointsCorrection[_owner]) / pointsMultiplier\r\n@param _owner The address of a token holder.\r\n@return The amount of funds that `_owner` has earned in total.\r",
+            "documentation": "prev. accumulativeDividendOf\n@notice View the amount of funds that an address has earned in total.\n@dev accumulativeFundsOf(_owner) = withdrawableFundsOf(_owner) + withdrawnFundsOf(_owner)\n= (pointsPerShare * balanceOf(_owner) + pointsCorrection[_owner]) / pointsMultiplier\n@param _owner The address of a token holder.\n@return The amount of funds that `_owner` has earned in total.",
             "id": 373,
             "implemented": true,
             "kind": "function",
@@ -2862,7 +2914,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1832,
+                        "referencedDeclaration": 1833,
                         "src": "4817:5:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_FundsDistributionToken_$487",
@@ -3341,7 +3393,7 @@
                 }
               ]
             },
-            "documentation": "@dev Internal function that transfer tokens from one address to another.\r\nUpdate pointsCorrection to keep funds unchanged.\r\n@param from The address to transfer from.\r\n@param to The address to transfer to.\r\n@param value The amount to be transferred.\r",
+            "documentation": "@dev Internal function that transfer tokens from one address to another.\nUpdate pointsCorrection to keep funds unchanged.\n@param from The address to transfer from.\n@param to The address to transfer to.\n@param value The amount to be transferred.",
             "id": 422,
             "implemented": true,
             "kind": "function",
@@ -3501,7 +3553,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1832,
+                        "referencedDeclaration": 1833,
                         "src": "5379:5:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_FundsDistributionToken_$487",
@@ -3796,7 +3848,7 @@
                 }
               ]
             },
-            "documentation": "@dev Internal function that mints tokens to an account.\r\nUpdate pointsCorrection to keep funds unchanged.\r\n@param account The account that will receive the created tokens.\r\n@param value The amount that will be created.\r",
+            "documentation": "@dev Internal function that mints tokens to an account.\nUpdate pointsCorrection to keep funds unchanged.\n@param account The account that will receive the created tokens.\n@param value The amount that will be created.",
             "id": 454,
             "implemented": true,
             "kind": "function",
@@ -3929,7 +3981,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1832,
+                        "referencedDeclaration": 1833,
                         "src": "5851:5:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_FundsDistributionToken_$487",
@@ -4224,7 +4276,7 @@
                 }
               ]
             },
-            "documentation": "@dev Internal function that burns an amount of the token of a given account.\r\nUpdate pointsCorrection to keep funds unchanged.\r\n@param account The account whose tokens will be burnt.\r\n@param value The amount that will be burnt.\r",
+            "documentation": "@dev Internal function that burns an amount of the token of a given account.\nUpdate pointsCorrection to keep funds unchanged.\n@param account The account whose tokens will be burnt.\n@param value The amount that will be burnt.",
             "id": 486,
             "implemented": true,
             "kind": "function",
@@ -4464,7 +4516,7 @@
           1781
         ],
         "contractKind": "contract",
-        "documentation": "@title FundsDistributionToken\r\n@author Johannes Escherich\r\n@author Roger-Wu\r\n@author Johannes Pfeffer\r\n@author Tom Lam\r\n@dev A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments, \r\nfee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw \r\ntheir claims.\r\nFundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and \r\nwithdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.\r",
+        "documentation": "@title FundsDistributionToken\n@author Johannes Escherich\n@author Roger-Wu\n@author Johannes Pfeffer\n@author Tom Lam\n@dev A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments, \nfee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw \ntheir claims.\nFundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and \nwithdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.",
         "fullyImplemented": false,
         "id": 487,
         "linearizedBaseContracts": [
@@ -5397,7 +5449,7 @@
                 }
               ]
             },
-            "documentation": "prev. distributeDividends\r\n@notice Distributes funds to token holders.\r\n@dev It reverts if the total supply of tokens is 0.\r\nIt emits the `FundsDistributed` event if the amount of received ether is greater than 0.\r\nAbout undistributed funds:\r\n  In each distribution, there is a small amount of funds which does not get distributed,\r\n    which is `(msg.value * pointsMultiplier) % totalSupply()`.\r\n  With a well-chosen `pointsMultiplier`, the amount funds that are not getting distributed\r\n    in a distribution can be less than 1 (base unit).\r\n  We can actually keep track of the undistributed ether in a distribution\r\n    and try to distribute it in the next distribution ....... todo implement  \r",
+            "documentation": "prev. distributeDividends\n@notice Distributes funds to token holders.\n@dev It reverts if the total supply of tokens is 0.\nIt emits the `FundsDistributed` event if the amount of received ether is greater than 0.\nAbout undistributed funds:\n  In each distribution, there is a small amount of funds which does not get distributed,\n    which is `(msg.value * pointsMultiplier) % totalSupply()`.\n  With a well-chosen `pointsMultiplier`, the amount funds that are not getting distributed\n    in a distribution can be less than 1 (base unit).\n  We can actually keep track of the undistributed ether in a distribution\n    and try to distribute it in the next distribution ....... todo implement  ",
             "id": 284,
             "implemented": true,
             "kind": "function",
@@ -5848,7 +5900,7 @@
                 }
               ]
             },
-            "documentation": "prev. withdrawDividend\r\n@notice Prepares funds withdrawal\r\n@dev It emits a `FundsWithdrawn` event if the amount of withdrawn ether is greater than 0.\r",
+            "documentation": "prev. withdrawDividend\n@notice Prepares funds withdrawal\n@dev It emits a `FundsWithdrawn` event if the amount of withdrawn ether is greater than 0.",
             "id": 318,
             "implemented": true,
             "kind": "function",
@@ -6042,7 +6094,7 @@
                 }
               ]
             },
-            "documentation": "prev. withdrawableDividendOf\r\n@notice View the amount of funds that an address can withdraw.\r\n@param _owner The address of a token holder.\r\n@return The amount funds that `_owner` can withdraw.\r",
+            "documentation": "prev. withdrawableDividendOf\n@notice View the amount of funds that an address can withdraw.\n@param _owner The address of a token holder.\n@return The amount funds that `_owner` can withdraw.",
             "id": 335,
             "implemented": true,
             "kind": "function",
@@ -6176,7 +6228,7 @@
                 }
               ]
             },
-            "documentation": "prev. withdrawnDividendOf\r\n@notice View the amount of funds that an address has withdrawn.\r\n@param _owner The address of a token holder.\r\n@return The amount of funds that `_owner` has withdrawn.\r",
+            "documentation": "prev. withdrawnDividendOf\n@notice View the amount of funds that an address has withdrawn.\n@param _owner The address of a token holder.\n@return The amount of funds that `_owner` has withdrawn.",
             "id": 347,
             "implemented": true,
             "kind": "function",
@@ -6548,7 +6600,7 @@
                 }
               ]
             },
-            "documentation": "prev. accumulativeDividendOf\r\n@notice View the amount of funds that an address has earned in total.\r\n@dev accumulativeFundsOf(_owner) = withdrawableFundsOf(_owner) + withdrawnFundsOf(_owner)\r\n= (pointsPerShare * balanceOf(_owner) + pointsCorrection[_owner]) / pointsMultiplier\r\n@param _owner The address of a token holder.\r\n@return The amount of funds that `_owner` has earned in total.\r",
+            "documentation": "prev. accumulativeDividendOf\n@notice View the amount of funds that an address has earned in total.\n@dev accumulativeFundsOf(_owner) = withdrawableFundsOf(_owner) + withdrawnFundsOf(_owner)\n= (pointsPerShare * balanceOf(_owner) + pointsCorrection[_owner]) / pointsMultiplier\n@param _owner The address of a token holder.\n@return The amount of funds that `_owner` has earned in total.",
             "id": 373,
             "implemented": true,
             "kind": "function",
@@ -6699,7 +6751,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1832,
+                        "referencedDeclaration": 1833,
                         "src": "4817:5:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_FundsDistributionToken_$487",
@@ -7178,7 +7230,7 @@
                 }
               ]
             },
-            "documentation": "@dev Internal function that transfer tokens from one address to another.\r\nUpdate pointsCorrection to keep funds unchanged.\r\n@param from The address to transfer from.\r\n@param to The address to transfer to.\r\n@param value The amount to be transferred.\r",
+            "documentation": "@dev Internal function that transfer tokens from one address to another.\nUpdate pointsCorrection to keep funds unchanged.\n@param from The address to transfer from.\n@param to The address to transfer to.\n@param value The amount to be transferred.",
             "id": 422,
             "implemented": true,
             "kind": "function",
@@ -7338,7 +7390,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1832,
+                        "referencedDeclaration": 1833,
                         "src": "5379:5:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_FundsDistributionToken_$487",
@@ -7633,7 +7685,7 @@
                 }
               ]
             },
-            "documentation": "@dev Internal function that mints tokens to an account.\r\nUpdate pointsCorrection to keep funds unchanged.\r\n@param account The account that will receive the created tokens.\r\n@param value The amount that will be created.\r",
+            "documentation": "@dev Internal function that mints tokens to an account.\nUpdate pointsCorrection to keep funds unchanged.\n@param account The account that will receive the created tokens.\n@param value The amount that will be created.",
             "id": 454,
             "implemented": true,
             "kind": "function",
@@ -7766,7 +7818,7 @@
                         "name": "super",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1832,
+                        "referencedDeclaration": 1833,
                         "src": "5851:5:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_super$_FundsDistributionToken_$487",
@@ -8061,7 +8113,7 @@
                 }
               ]
             },
-            "documentation": "@dev Internal function that burns an amount of the token of a given account.\r\nUpdate pointsCorrection to keep funds unchanged.\r\n@param account The account whose tokens will be burnt.\r\n@param value The amount that will be burnt.\r",
+            "documentation": "@dev Internal function that burns an amount of the token of a given account.\nUpdate pointsCorrection to keep funds unchanged.\n@param account The account whose tokens will be burnt.\n@param value The amount that will be burnt.",
             "id": 486,
             "implemented": true,
             "kind": "function",
@@ -8149,86 +8201,86 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-10-17T14:20:53.146Z",
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-17T07:17:34.805Z",
   "devdoc": {
-    "author": "Johannes Escherich\rRoger-Wu\rJohannes Pfeffer\rTom Lam\r",
-    "details": "A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments, \r fee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw \r their claims.\r FundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and \r withdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.\r",
+    "author": "Johannes EscherichRoger-WuJohannes PfefferTom Lam",
+    "details": "A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments,  fee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw  their claims. FundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and  withdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.",
     "methods": {
       "accumulativeFundsOf(address)": {
-        "details": "accumulativeFundsOf(_owner) = withdrawableFundsOf(_owner) + withdrawnFundsOf(_owner)\r = (pointsPerShare * balanceOf(_owner) + pointsCorrection[_owner]) / pointsMultiplier\r",
+        "details": "accumulativeFundsOf(_owner) = withdrawableFundsOf(_owner) + withdrawnFundsOf(_owner) = (pointsPerShare * balanceOf(_owner) + pointsCorrection[_owner]) / pointsMultiplier",
         "params": {
-          "_owner": "The address of a token holder.\r"
+          "_owner": "The address of a token holder."
         },
-        "return": "The amount of funds that `_owner` has earned in total.\r"
+        "return": "The amount of funds that `_owner` has earned in total."
       },
       "allowance(address,address)": {
-        "details": "See {IERC20-allowance}.\r"
+        "details": "See {IERC20-allowance}."
       },
       "approve(address,uint256)": {
-        "details": "See {IERC20-approve}.\r      * Requirements:\r      * - `spender` cannot be the zero address.\r"
+        "details": "See {IERC20-approve}.      * Requirements:      * - `spender` cannot be the zero address."
       },
       "balanceOf(address)": {
-        "details": "See {IERC20-balanceOf}.\r"
+        "details": "See {IERC20-balanceOf}."
       },
       "decimals()": {
-        "details": "Returns the number of decimals used to get its user representation.\r For example, if `decimals` equals `2`, a balance of `505` tokens should\r be displayed to a user as `5,05` (`505 / 10 ** 2`).\r      * Tokens usually opt for a value of 18, imitating the relationship between\r Ether and Wei.\r      * NOTE: This information is only used for _display_ purposes: it in\r no way affects any of the arithmetic of the contract, including\r {IERC20-balanceOf} and {IERC20-transfer}.\r"
+        "details": "Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5,05` (`505 / 10 ** 2`).      * Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei.      * NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}."
       },
       "decreaseAllowance(address,uint256)": {
-        "details": "Atomically decreases the allowance granted to `spender` by the caller.\r      * This is an alternative to {approve} that can be used as a mitigation for\r problems described in {IERC20-approve}.\r      * Emits an {Approval} event indicating the updated allowance.\r      * Requirements:\r      * - `spender` cannot be the zero address.\r - `spender` must have allowance for the caller of at least\r `subtractedValue`.\r"
+        "details": "Atomically decreases the allowance granted to `spender` by the caller.      * This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}.      * Emits an {Approval} event indicating the updated allowance.      * Requirements:      * - `spender` cannot be the zero address. - `spender` must have allowance for the caller of at least `subtractedValue`."
       },
       "increaseAllowance(address,uint256)": {
-        "details": "Atomically increases the allowance granted to `spender` by the caller.\r      * This is an alternative to {approve} that can be used as a mitigation for\r problems described in {IERC20-approve}.\r      * Emits an {Approval} event indicating the updated allowance.\r      * Requirements:\r      * - `spender` cannot be the zero address.\r"
+        "details": "Atomically increases the allowance granted to `spender` by the caller.      * This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}.      * Emits an {Approval} event indicating the updated allowance.      * Requirements:      * - `spender` cannot be the zero address."
       },
       "mint(address,uint256)": {
-        "details": "See {ERC20-_mint}.\r      * Requirements:\r      * - the caller must have the {MinterRole}.\r"
+        "details": "See {ERC20-_mint}.      * Requirements:      * - the caller must have the {MinterRole}."
       },
       "name()": {
-        "details": "Returns the name of the token.\r"
+        "details": "Returns the name of the token."
       },
       "symbol()": {
-        "details": "Returns the symbol of the token, usually a shorter version of the\r name.\r"
+        "details": "Returns the symbol of the token, usually a shorter version of the name."
       },
       "totalSupply()": {
-        "details": "See {IERC20-totalSupply}.\r"
+        "details": "See {IERC20-totalSupply}."
       },
       "transfer(address,uint256)": {
-        "details": "See {IERC20-transfer}.\r      * Requirements:\r      * - `recipient` cannot be the zero address.\r - the caller must have a balance of at least `amount`.\r"
+        "details": "See {IERC20-transfer}.      * Requirements:      * - `recipient` cannot be the zero address. - the caller must have a balance of at least `amount`."
       },
       "transferFrom(address,address,uint256)": {
-        "details": "See {IERC20-transferFrom}.\r      * Emits an {Approval} event indicating the updated allowance. This is not\r required by the EIP. See the note at the beginning of {ERC20};\r      * Requirements:\r - `sender` and `recipient` cannot be the zero address.\r - `sender` must have a balance of at least `amount`.\r - the caller must have allowance for `sender`'s tokens of at least\r `amount`.\r"
+        "details": "See {IERC20-transferFrom}.      * Emits an {Approval} event indicating the updated allowance. This is not required by the EIP. See the note at the beginning of {ERC20};      * Requirements: - `sender` and `recipient` cannot be the zero address. - `sender` must have a balance of at least `amount`. - the caller must have allowance for `sender`'s tokens of at least `amount`."
       },
       "withdrawFunds()": {
-        "details": "Withdraws all available funds for a FundsDistributionToken holder.\r"
+        "details": "Withdraws all available funds for a FundsDistributionToken holder."
       },
       "withdrawableFundsOf(address)": {
         "params": {
-          "_owner": "The address of a token holder.\r"
+          "_owner": "The address of a token holder."
         },
-        "return": "The amount funds that `_owner` can withdraw.\r"
+        "return": "The amount funds that `_owner` can withdraw."
       },
       "withdrawnFundsOf(address)": {
         "params": {
-          "_owner": "The address of a token holder.\r"
+          "_owner": "The address of a token holder."
         },
-        "return": "The amount of funds that `_owner` has withdrawn.\r"
+        "return": "The amount of funds that `_owner` has withdrawn."
       }
     },
-    "title": "FundsDistributionToken\r"
+    "title": "FundsDistributionToken"
   },
   "userdoc": {
     "methods": {
       "accumulativeFundsOf(address)": {
-        "notice": "prev. accumulativeDividendOf\rView the amount of funds that an address has earned in total.\r"
+        "notice": "prev. accumulativeDividendOfView the amount of funds that an address has earned in total."
       },
       "withdrawableFundsOf(address)": {
-        "notice": "prev. withdrawableDividendOf\rView the amount of funds that an address can withdraw.\r"
+        "notice": "prev. withdrawableDividendOfView the amount of funds that an address can withdraw."
       },
       "withdrawnFundsOf(address)": {
-        "notice": "prev. withdrawnDividendOf\rView the amount of funds that an address has withdrawn.\r"
+        "notice": "prev. withdrawnDividendOfView the amount of funds that an address has withdrawn."
       }
     }
   }

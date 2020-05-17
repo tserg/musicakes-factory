@@ -2,145 +2,19 @@
   "contractName": "ERC20Detailed",
   "abi": [
     {
-      "constant": false,
       "inputs": [
         {
-          "name": "spender",
-          "type": "address"
-        },
-        {
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "approve",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "totalSupply",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "sender",
-          "type": "address"
-        },
-        {
-          "name": "recipient",
-          "type": "address"
-        },
-        {
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "transferFrom",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "balanceOf",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "recipient",
-          "type": "address"
-        },
-        {
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "transfer",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "owner",
-          "type": "address"
-        },
-        {
-          "name": "spender",
-          "type": "address"
-        }
-      ],
-      "name": "allowance",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
+          "internalType": "string",
           "name": "name",
           "type": "string"
         },
         {
+          "internalType": "string",
           "name": "symbol",
           "type": "string"
         },
         {
+          "internalType": "uint8",
           "name": "decimals",
           "type": "uint8"
         }
@@ -154,38 +28,19 @@
       "inputs": [
         {
           "indexed": true,
-          "name": "from",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "to",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "value",
-          "type": "uint256"
-        }
-      ],
-      "name": "Transfer",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
+          "internalType": "address",
           "name": "owner",
           "type": "address"
         },
         {
           "indexed": true,
+          "internalType": "address",
           "name": "spender",
           "type": "address"
         },
         {
           "indexed": false,
+          "internalType": "uint256",
           "name": "value",
           "type": "uint256"
         }
@@ -194,11 +49,182 @@
       "type": "event"
     },
     {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "constant": true,
       "inputs": [],
       "name": "name",
       "outputs": [
         {
+          "internalType": "string",
           "name": "",
           "type": "string"
         }
@@ -213,6 +239,7 @@
       "name": "symbol",
       "outputs": [
         {
+          "internalType": "string",
           "name": "",
           "type": "string"
         }
@@ -227,6 +254,7 @@
       "name": "decimals",
       "outputs": [
         {
+          "internalType": "uint8",
           "name": "",
           "type": "uint8"
         }
@@ -236,6 +264,7 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"symbol\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"decimals\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Optional functions from the ERC20 standard.\",\"methods\":{\"allowance(address,address)\":{\"details\":\"Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default.      * This value changes when {approve} or {transferFrom} are called.\"},\"approve(address,uint256)\":{\"details\":\"Sets `amount` as the allowance of `spender` over the caller's tokens.      * Returns a boolean value indicating whether the operation succeeded.      * IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729      * Emits an {Approval} event.\"},\"balanceOf(address)\":{\"details\":\"Returns the amount of tokens owned by `account`.\"},\"constructor\":{\"details\":\"Sets the values for `name`, `symbol`, and `decimals`. All three of these values are immutable: they can only be set once during construction.\"},\"decimals()\":{\"details\":\"Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5,05` (`505 / 10 ** 2`).      * Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei.      * NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}.\"},\"name()\":{\"details\":\"Returns the name of the token.\"},\"symbol()\":{\"details\":\"Returns the symbol of the token, usually a shorter version of the name.\"},\"totalSupply()\":{\"details\":\"Returns the amount of tokens in existence.\"},\"transfer(address,uint256)\":{\"details\":\"Moves `amount` tokens from the caller's account to `recipient`.      * Returns a boolean value indicating whether the operation succeeded.      * Emits a {Transfer} event.\"},\"transferFrom(address,address,uint256)\":{\"details\":\"Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism. `amount` is then deducted from the caller's allowance.      * Returns a boolean value indicating whether the operation succeeded.      * Emits a {Transfer} event.\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/ERC20Detailed.sol\":\"ERC20Detailed\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/ERC20Detailed.sol\":{\"keccak256\":\"0x28e916f72e8002b88b787363eb43a07aabcf218cdd7335111cc117dab3a818a0\",\"urls\":[\"bzz-raw://ea6e7b02a24136e39788a0af49ba32c793a59315d24e0ad6a414b6000e48f75b\",\"dweb:/ipfs/QmbbExKYSRUGj4xtQmmWo3Yq7AkbvPJP3cN5QYqwbLCAoi\"]},\"/C/Users/Gary/funds-distribution-token-custom/contracts/external/tokens/IERC20.sol\":{\"keccak256\":\"0x0026edc82e7b911c32cad4b1a320a13d728d969c78e02707a98ca1afd73564d0\",\"urls\":[\"bzz-raw://ff2cdc716c32001731c4c28b1687a16210787ea9008fc9ccd367e8d5851bf6d4\",\"dweb:/ipfs/QmXfUbLczdXB1EGbH8LQjjUNbh3PpsxuTscXasYPxjxaCJ\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
@@ -299,7 +328,7 @@
           1781
         ],
         "contractKind": "contract",
-        "documentation": "@dev Optional functions from the ERC20 standard.\r",
+        "documentation": "@dev Optional functions from the ERC20 standard.",
         "fullyImplemented": false,
         "id": 1684,
         "linearizedBaseContracts": [
@@ -533,7 +562,7 @@
                 }
               ]
             },
-            "documentation": "@dev Sets the values for `name`, `symbol`, and `decimals`. All three of\r\nthese values are immutable: they can only be set once during\r\nconstruction.\r",
+            "documentation": "@dev Sets the values for `name`, `symbol`, and `decimals`. All three of\nthese values are immutable: they can only be set once during\nconstruction.",
             "id": 1659,
             "implemented": true,
             "kind": "constructor",
@@ -664,7 +693,7 @@
                 }
               ]
             },
-            "documentation": "@dev Returns the name of the token.\r",
+            "documentation": "@dev Returns the name of the token.",
             "id": 1667,
             "implemented": true,
             "kind": "function",
@@ -743,7 +772,7 @@
                 }
               ]
             },
-            "documentation": "@dev Returns the symbol of the token, usually a shorter version of the\r\nname.\r",
+            "documentation": "@dev Returns the symbol of the token, usually a shorter version of the\nname.",
             "id": 1675,
             "implemented": true,
             "kind": "function",
@@ -822,7 +851,7 @@
                 }
               ]
             },
-            "documentation": "@dev Returns the number of decimals used to get its user representation.\r\nFor example, if `decimals` equals `2`, a balance of `505` tokens should\r\nbe displayed to a user as `5,05` (`505 / 10 ** 2`).\r\n\n     * Tokens usually opt for a value of 18, imitating the relationship between\r\nEther and Wei.\r\n\n     * NOTE: This information is only used for _display_ purposes: it in\r\nno way affects any of the arithmetic of the contract, including\r\n{IERC20-balanceOf} and {IERC20-transfer}.\r",
+            "documentation": "@dev Returns the number of decimals used to get its user representation.\nFor example, if `decimals` equals `2`, a balance of `505` tokens should\nbe displayed to a user as `5,05` (`505 / 10 ** 2`).\n\n     * Tokens usually opt for a value of 18, imitating the relationship between\nEther and Wei.\n\n     * NOTE: This information is only used for _display_ purposes: it in\nno way affects any of the arithmetic of the contract, including\n{IERC20-balanceOf} and {IERC20-transfer}.",
             "id": 1683,
             "implemented": true,
             "kind": "function",
@@ -938,7 +967,7 @@
           1781
         ],
         "contractKind": "contract",
-        "documentation": "@dev Optional functions from the ERC20 standard.\r",
+        "documentation": "@dev Optional functions from the ERC20 standard.",
         "fullyImplemented": false,
         "id": 1684,
         "linearizedBaseContracts": [
@@ -1172,7 +1201,7 @@
                 }
               ]
             },
-            "documentation": "@dev Sets the values for `name`, `symbol`, and `decimals`. All three of\r\nthese values are immutable: they can only be set once during\r\nconstruction.\r",
+            "documentation": "@dev Sets the values for `name`, `symbol`, and `decimals`. All three of\nthese values are immutable: they can only be set once during\nconstruction.",
             "id": 1659,
             "implemented": true,
             "kind": "constructor",
@@ -1303,7 +1332,7 @@
                 }
               ]
             },
-            "documentation": "@dev Returns the name of the token.\r",
+            "documentation": "@dev Returns the name of the token.",
             "id": 1667,
             "implemented": true,
             "kind": "function",
@@ -1382,7 +1411,7 @@
                 }
               ]
             },
-            "documentation": "@dev Returns the symbol of the token, usually a shorter version of the\r\nname.\r",
+            "documentation": "@dev Returns the symbol of the token, usually a shorter version of the\nname.",
             "id": 1675,
             "implemented": true,
             "kind": "function",
@@ -1461,7 +1490,7 @@
                 }
               ]
             },
-            "documentation": "@dev Returns the number of decimals used to get its user representation.\r\nFor example, if `decimals` equals `2`, a balance of `505` tokens should\r\nbe displayed to a user as `5,05` (`505 / 10 ** 2`).\r\n\n     * Tokens usually opt for a value of 18, imitating the relationship between\r\nEther and Wei.\r\n\n     * NOTE: This information is only used for _display_ purposes: it in\r\nno way affects any of the arithmetic of the contract, including\r\n{IERC20-balanceOf} and {IERC20-transfer}.\r",
+            "documentation": "@dev Returns the number of decimals used to get its user representation.\nFor example, if `decimals` equals `2`, a balance of `505` tokens should\nbe displayed to a user as `5,05` (`505 / 10 ** 2`).\n\n     * Tokens usually opt for a value of 18, imitating the relationship between\nEther and Wei.\n\n     * NOTE: This information is only used for _display_ purposes: it in\nno way affects any of the arithmetic of the contract, including\n{IERC20-balanceOf} and {IERC20-transfer}.",
             "id": 1683,
             "implemented": true,
             "kind": "function",
@@ -1522,43 +1551,43 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-10-17T14:20:53.119Z",
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-17T07:17:34.853Z",
   "devdoc": {
-    "details": "Optional functions from the ERC20 standard.\r",
+    "details": "Optional functions from the ERC20 standard.",
     "methods": {
       "allowance(address,address)": {
-        "details": "Returns the remaining number of tokens that `spender` will be\r allowed to spend on behalf of `owner` through {transferFrom}. This is\r zero by default.\r      * This value changes when {approve} or {transferFrom} are called.\r"
+        "details": "Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default.      * This value changes when {approve} or {transferFrom} are called."
       },
       "approve(address,uint256)": {
-        "details": "Sets `amount` as the allowance of `spender` over the caller's tokens.\r      * Returns a boolean value indicating whether the operation succeeded.\r      * IMPORTANT: Beware that changing an allowance with this method brings the risk\r that someone may use both the old and the new allowance by unfortunate\r transaction ordering. One possible solution to mitigate this race\r condition is to first reduce the spender's allowance to 0 and set the\r desired value afterwards:\r https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\r      * Emits an {Approval} event.\r"
+        "details": "Sets `amount` as the allowance of `spender` over the caller's tokens.      * Returns a boolean value indicating whether the operation succeeded.      * IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729      * Emits an {Approval} event."
       },
       "balanceOf(address)": {
-        "details": "Returns the amount of tokens owned by `account`.\r"
+        "details": "Returns the amount of tokens owned by `account`."
       },
       "constructor": {
-        "details": "Sets the values for `name`, `symbol`, and `decimals`. All three of\r these values are immutable: they can only be set once during\r construction.\r"
+        "details": "Sets the values for `name`, `symbol`, and `decimals`. All three of these values are immutable: they can only be set once during construction."
       },
       "decimals()": {
-        "details": "Returns the number of decimals used to get its user representation.\r For example, if `decimals` equals `2`, a balance of `505` tokens should\r be displayed to a user as `5,05` (`505 / 10 ** 2`).\r      * Tokens usually opt for a value of 18, imitating the relationship between\r Ether and Wei.\r      * NOTE: This information is only used for _display_ purposes: it in\r no way affects any of the arithmetic of the contract, including\r {IERC20-balanceOf} and {IERC20-transfer}.\r"
+        "details": "Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5,05` (`505 / 10 ** 2`).      * Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei.      * NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}."
       },
       "name()": {
-        "details": "Returns the name of the token.\r"
+        "details": "Returns the name of the token."
       },
       "symbol()": {
-        "details": "Returns the symbol of the token, usually a shorter version of the\r name.\r"
+        "details": "Returns the symbol of the token, usually a shorter version of the name."
       },
       "totalSupply()": {
-        "details": "Returns the amount of tokens in existence.\r"
+        "details": "Returns the amount of tokens in existence."
       },
       "transfer(address,uint256)": {
-        "details": "Moves `amount` tokens from the caller's account to `recipient`.\r      * Returns a boolean value indicating whether the operation succeeded.\r      * Emits a {Transfer} event.\r"
+        "details": "Moves `amount` tokens from the caller's account to `recipient`.      * Returns a boolean value indicating whether the operation succeeded.      * Emits a {Transfer} event."
       },
       "transferFrom(address,address,uint256)": {
-        "details": "Moves `amount` tokens from `sender` to `recipient` using the\r allowance mechanism. `amount` is then deducted from the caller's\r allowance.\r      * Returns a boolean value indicating whether the operation succeeded.\r      * Emits a {Transfer} event.\r"
+        "details": "Moves `amount` tokens from `sender` to `recipient` using the allowance mechanism. `amount` is then deducted from the caller's allowance.      * Returns a boolean value indicating whether the operation succeeded.      * Emits a {Transfer} event."
       }
     }
   },
