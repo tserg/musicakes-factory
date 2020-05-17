@@ -3,4 +3,5 @@ node_modules/
 
 migrations/2_deploy_contract.js
 
-build/
+build/contracts/
+

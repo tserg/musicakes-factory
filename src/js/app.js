@@ -137,7 +137,7 @@ var _abi = [
   }
 ];
 
-paymentTokenAddress = "0x841D4197A1dB5966B1b18A9563c11d81E9f001E6";
+paymentTokenAddress = "0x4f96fe3b7a6cf9725f59d353f723c1bdb64ca6aa";
 
 App = {
   Web3Provider: null,
@@ -290,6 +290,26 @@ App = {
     });
   },
 
+  handleUpdateDividends: function(event) {
+    var FDT_ERC20ExtensionInstance;
+
+    web3.eth.getAccounts().then(function(accounts) {
+
+      account = accounts[0];
+
+      App.contracts.FDT_ERC20Extension.deployed().then(function(instance) {
+
+        FDT_ERC20ExtensionInstance = instance;
+
+        return FDT_ERC20ExtensionInstance.updateFundsReceived({from: account});
+      }).catch(function(err) {
+        console.log(err.message);
+      });
+
+    });
+  },
+
+
   handleTransferPaymentToken: function(event) {
     console.log("Transfer payment token button pressed");
 
@@ -429,6 +449,11 @@ App = {
     var transferPaymentTokenButton = document.getElementById("btn-transfer-payment-token");
     transferPaymentTokenButton.addEventListener("click", function () {
       return App.handleTransferPaymentToken();
+    });
+
+    var updateDividendsButton = document.getElementById("btn-update-dividends");
+    updateDividendsButton.addEventListener("click", function () {
+      return App.handleUpdateDividends();
     });
 
     return App.getContractBalance();
