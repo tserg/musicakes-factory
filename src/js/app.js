@@ -314,10 +314,6 @@ App = {
           })
           .on('error', function(error) {
             console.log(error);
-          })
-          .then(function(receipt2) {
-            console.log("This function is triggered");
-            FDT_ERC20ExtensionInstance.updateFundsReceived({from: account});
           });
         });
 
