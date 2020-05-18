@@ -1,7 +1,8 @@
 # node_modules
 node_modules/
 
-migrations/2_deploy_contract.js
+migrations/2_deploy_contracts.js
 
 /build/contracts/
 
+src/js/app.js

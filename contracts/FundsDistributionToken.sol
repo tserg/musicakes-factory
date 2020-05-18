@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 
 import "./external/tokens/ERC20Detailed.sol";
-import "./external/tokens/ERC20Capped.sol";
+import "./external/tokens/ERC20.sol";
 import "./external/math/SafeMath.sol";
 import "./external/math/SafeMathUint.sol";
 import "./external/math/SafeMathInt.sol";
@@ -21,7 +21,7 @@ import "./IFundsDistributionToken.sol";
  * FundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and 
  * withdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.
  */
-contract FundsDistributionToken is IFundsDistributionToken, ERC20Detailed, ERC20Capped {
+contract FundsDistributionToken is IFundsDistributionToken, ERC20, ERC20Detailed {
 
 	using SafeMath for uint256;
 	using SafeMathUint for uint256;
@@ -41,9 +41,9 @@ contract FundsDistributionToken is IFundsDistributionToken, ERC20Detailed, ERC20
 	) 
 		public 
 		ERC20Detailed(name, symbol, 0)
-		ERC20Capped(100)
 	{
-		_mint(msg.sender, 100);
+		_mint(msg.sender, 98);
+		_mint(<<RENTSEEKER_ADDRESS>>, 2);
 	}
 
 	/** 
