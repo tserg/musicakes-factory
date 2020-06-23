@@ -18,9 +18,9 @@
  *
  */
 
-const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
-const privateKey = "50BDF9AB0EA331093AE798E6AFF34CBB6A7E6C9AC50FEAFAC881E66B9E0C4DCE"
-const endpointUrl = "https://kovan.infura.io/v3/7c2ddd48c1304f5097f5ea531a1244b4"
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const mnemonic = ""
+const endpointUrl = ""
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
@@ -52,7 +52,7 @@ module.exports = {
      kovan: {
       provider: function() {
         return new HDWalletProvider(
-          [privateKey],
+          mnemonic,
           endpointUrl
         )
       },
@@ -61,6 +61,16 @@ module.exports = {
       gas: 5000000,
       gasPrice: 25000000000,
       network_id: 42
+     },
+
+     ropsten: {
+      provider: function() {
+        return new HDWalletProvider(
+          mnemonic,
+          endpointUrl
+        )
+      },
+      network_id: 3
      }
 
     // Another network with more advanced options...

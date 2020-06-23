@@ -6,3 +6,5 @@ migrations/2_deploy_contracts.js
 /build/contracts/
 
 src/js/app.js
+
+truffle-config.js

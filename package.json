@@ -7,6 +7,7 @@
     "test": "test"
   },
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.0.35",
     "truffle-hdwallet-provider": "1.0.4",
     "truffle-hdwallet-provider-privkey": "1.0.3",
     "web3": "1.0.0-beta.46"
