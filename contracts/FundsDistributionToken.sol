@@ -36,14 +36,15 @@ contract FundsDistributionToken is IFundsDistributionToken, ERC20, ERC20Detailed
 
 
 	constructor (
+		address owner,
 		string memory name, 
 		string memory symbol
 	) 
 		public 
 		ERC20Detailed(name, symbol, 0)
 	{
-		_mint(msg.sender, 98);
-		_mint(<<RENTSEEKER_ADDRESS>>, 2);
+		_mint(owner, 98);
+		_mint("", 2);
 	}
 
 	/** 

@@ -24,16 +24,15 @@ contract FDT_ERC20Extension is IFundsDistributionToken, FundsDistributionToken {
 	}
 
 	constructor(
+		address owner,
 		string memory name, 
-		string memory symbol,
-		IERC20 _fundsToken
+		string memory symbol
 	)
 		public
-		FundsDistributionToken(name, symbol) 
+		FundsDistributionToken(owner, name, symbol) 
 	{
-		require(address(_fundsToken) != address(0), "FDT_ERC20Extension: INVALID_FUNDS_TOKEN_ADDRESS");
 
-		fundsToken = _fundsToken;
+		fundsToken = IERC20(0x66D9672FeEc8220185C33fE4fBEe89c3c52f9F1f);
 	}
 
 	/**
@@ -110,4 +109,13 @@ contract FDT_ERC20Extension is IFundsDistributionToken, FundsDistributionToken {
 	}
 
 
+}
+
+contract MusicakesFactory {
+	FDT_ERC20Extension[] deployedMusicakesContracts;
+
+	function createNewMusicakes(string calldata name, string calldata symbol) external {
+		FDT_ERC20Extension instance = new FDT_ERC20Extension(msg.sender, name, symbol);
+		deployedMusicakesContracts.push(instance);
+	}
 }

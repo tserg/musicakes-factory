@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Funds Distribution Token</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script type="text/javascript" src="./js/truffle-contract.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+
+  </head>
+
+  <body>
+
+
+    <h1 align="center">Dividend Token</h1>
+    <br>
+    <h3 align="center">Please refresh the page after each action.</h3>
+
+    <div id = "user-dashboard" class="dashboard">
+
+      <span><h3>User Dashboard</h3></span>
+
+      <div id="wallet_display">
+        <span>Current wallet: </span>
+        <span id ="account-address"></span>
+      </div>
+
+      <div id="eth_balance_display">
+        <span>Current ETH balance: </span>
+        <span id = "account-balance"></span>
+      </div>
+
+      <br>
+
+      <div id="enable-ethereum-section">
+        <button type="button" id="enable-ethereum-button">Enable Ethereum</button>
+      </div>
+
+      <div id="create-musicakes-section">
+        <button type="button" id="create-musicakes-button">Create Musicakes contract</button>
+      </div>
+
+
+    </div>
+    <script type="text/javascript" src = "js/factory.js"></script>
+  </body>
+
+</html>
