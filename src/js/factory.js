@@ -4,6 +4,12 @@ const showAccountBalance = document.querySelector('#account-balance');
 
 const createMusicakesButton = document.querySelector('#create-musicakes-button');
 
+const getMusicakesCountButton = document.querySelector('#get-musicakes-count-button');
+const musicakesCount = document.querySelector('#musicakes-count');
+
+const getMusicakesAddressButton = document.querySelector('#get-musicakes-address-button');
+const musicakesAddress = document.querySelector('#musicakes-address');
+
 var web3 = new Web3(Web3.givenProvider);
 
 enableEthereumButton.addEventListener('click', () => {
@@ -14,7 +20,36 @@ createMusicakesButton.addEventListener('click', () => {
   createMusicakes();
 });
 
+getMusicakesCountButton.addEventListener('click', () => {
+  getMusicakesCount();
+});
+
+getMusicakesAddressButton.addEventListener('click', () => {
+  getMusicakesAddress();
+});
+
 var _abi = [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "contracts",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
     {
       "constant": false,
       "inputs": [
@@ -34,10 +69,46 @@ var _abi = [
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getMusicakesCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "musicakesCount",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "name": "getMusicakesAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "musicakesAddress",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     }
 ]
 
-const musicakesFactoryContractAddress = "0xe3191B3f8e3d58A644d3d0Aa094d5A501CACB44F";
+const musicakesFactoryContractAddress = "0x43E60b4Ed7D763A4c4927Ad05d1C30610B1b06D8";
 const musicakesFactoryContract = new web3.eth.Contract(_abi, musicakesFactoryContractAddress);
 
 ethereum.on('accountsChanged', function(accounts) {
@@ -68,14 +139,43 @@ async function loadInterface() {
 
 async function createMusicakes() {
 
-  var musicakes = musicakesFactoryContract.methods.createNewMusicakes("Musicakes_1", "MSC_01").call(function(error, result) {
+  const account = ethereum.selectedAddress;
+
+  musicakesFactoryContract.methods.createNewMusicakes("Musicakes_1", "MSC_01").send({from: account})
+  .once('transactionHash', function(hash) {
+    console.log(hash);
+  })
+  .once('receipt', function(receipt) {
+    console.log(receipt);
+
+  })
+  .on('error', function(error) {
+    console.log(error);
+  });
+}
+
+
+async function getMusicakesCount() {
+
+  var musicakesCountResult = musicakesFactoryContract.methods.getMusicakesCount().call(function(error, result) {
     if (!error) {
-      console.log('success');
+      console.log(result);
+      formatted_result = result.toString();
+      musicakesCount.innerHTML = formatted_result;
     } else {
       console.log(error);
     }
   });
 }
 
+async function getMusicakesAddress() {
 
-
+  var musicakesAddressResult = musicakesFactoryContract.methods.getMusicakesAddress(0).call(function(error, result) {
+    if (!error) {
+      console.log(result);
+      musicakesAddress.innerHTML = result;
+    } else {
+      console.log(error);
+    }
+  });
+}

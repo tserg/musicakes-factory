@@ -32,7 +32,7 @@ contract FDT_ERC20Extension is IFundsDistributionToken, FundsDistributionToken {
 		FundsDistributionToken(owner, name, symbol) 
 	{
 
-		fundsToken = IERC20(0x66D9672FeEc8220185C33fE4fBEe89c3c52f9F1f);
+		fundsToken = IERC20(0x8172359A336C7318cc2a74cD4a6cDAeBcbc8D7e9);
 	}
 
 	/**
@@ -113,9 +113,28 @@ contract FDT_ERC20Extension is IFundsDistributionToken, FundsDistributionToken {
 
 contract MusicakesFactory {
 	FDT_ERC20Extension[] deployedMusicakesContracts;
+	address[] public contracts;
 
 	function createNewMusicakes(string calldata name, string calldata symbol) external {
 		FDT_ERC20Extension instance = new FDT_ERC20Extension(msg.sender, name, symbol);
 		deployedMusicakesContracts.push(instance);
+		contracts.push(address(instance));
 	}
+
+	function getMusicakesCount()
+		public
+		view
+		returns(uint musicakesCount)
+	{
+		return contracts.length;
+	}
+
+	function getMusicakesAddress(uint count)
+		public
+		view
+		returns(address musicakesAddress)
+	{
+		return contracts[count];
+	}
+
 }
