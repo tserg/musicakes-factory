@@ -115,10 +115,13 @@ contract MusicakesFactory {
 	FDT_ERC20Extension[] deployedMusicakesContracts;
 	address[] public contracts;
 
+	event MusicakesCreated(address musicakesContract);
+
 	function createNewMusicakes(string calldata name, string calldata symbol) external {
 		FDT_ERC20Extension instance = new FDT_ERC20Extension(msg.sender, name, symbol);
 		deployedMusicakesContracts.push(instance);
 		contracts.push(address(instance));
+		emit MusicakesCreated(address(instance));
 	}
 
 	function getMusicakesCount()

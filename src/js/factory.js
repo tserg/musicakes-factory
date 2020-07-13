@@ -108,7 +108,7 @@ var _abi = [
     }
 ]
 
-const musicakesFactoryContractAddress = "0x43E60b4Ed7D763A4c4927Ad05d1C30610B1b06D8";
+const musicakesFactoryContractAddress = "0xA30d848Edbe1495743d60632fA0142a6988f446a";
 const musicakesFactoryContract = new web3.eth.Contract(_abi, musicakesFactoryContractAddress);
 
 ethereum.on('accountsChanged', function(accounts) {
@@ -147,7 +147,7 @@ async function createMusicakes() {
   })
   .once('receipt', function(receipt) {
     console.log(receipt);
-
+    console.log(receipt['events']['0']['address']);
   })
   .on('error', function(error) {
     console.log(error);
