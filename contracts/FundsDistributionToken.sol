@@ -1,31 +1,28 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: MIT
 
-import "./external/tokens/ERC20Detailed.sol";
+pragma solidity ^0.8.2;
+
 import "./external/tokens/ERC20.sol";
 import "./external/math/SafeMath.sol";
-import "./external/math/SafeMathUint.sol";
-import "./external/math/SafeMathInt.sol";
 
 import "./IFundsDistributionToken.sol";
 
 
-/** 
+/**
  * @title FundsDistributionToken
  * @author Johannes Escherich
  * @author Roger-Wu
  * @author Johannes Pfeffer
  * @author Tom Lam
- * @dev A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments, 
- * fee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw 
+ * @dev A  mintable token that can represent claims on cash flow of arbitrary assets such as dividends, loan repayments,
+ * fee or revenue shares among large numbers of token holders. Anyone can deposit funds, token holders can withdraw
  * their claims.
- * FundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and 
+ * FundsDistributionToken (FDT) implements the accounting logic. FDT-Extension contracts implement methods for depositing and
  * withdrawing funds in Ether or according to a token standard such as ERC20, ERC223, ERC777.
  */
-contract FundsDistributionToken is IFundsDistributionToken, ERC20, ERC20Detailed {
+abstract contract FundsDistributionToken is IFundsDistributionToken, ERC20 {
 
 	using SafeMath for uint256;
-	using SafeMathUint for uint256;
-	using SafeMathInt for int256;
 
 	// optimize, see https://github.com/ethereum/EIPs/issues/1726#issuecomment-472352728
 	uint256 constant internal pointsMultiplier = 2**128;
@@ -37,17 +34,15 @@ contract FundsDistributionToken is IFundsDistributionToken, ERC20, ERC20Detailed
 
 	constructor (
 		address owner,
-		string memory name, 
+		string memory name,
 		string memory symbol
-	) 
-		public 
-		ERC20Detailed(name, symbol, 0)
+	)
+		ERC20(name, symbol)
 	{
-		_mint(owner, 98);
-		_mint("", 2);
+		_mint(owner, 100);
 	}
 
-	/** 
+	/**
 	 * prev. distributeDividends
 	 * @notice Distributes funds to token holders.
 	 * @dev It reverts if the total supply of tokens is 0.
@@ -58,7 +53,7 @@ contract FundsDistributionToken is IFundsDistributionToken, ERC20, ERC20Detailed
 	 *   With a well-chosen `pointsMultiplier`, the amount funds that are not getting distributed
 	 *     in a distribution can be less than 1 (base unit).
 	 *   We can actually keep track of the undistributed ether in a distribution
-	 *     and try to distribute it in the next distribution ....... todo implement  
+	 *     and try to distribute it in the next distribution ....... todo implement
 	 */
 	function _distributeFunds(uint256 value) internal {
 		require(totalSupply() > 0, "FundsDistributionToken._distributeFunds: SUPPLY_IS_ZERO");
@@ -78,24 +73,24 @@ contract FundsDistributionToken is IFundsDistributionToken, ERC20, ERC20Detailed
 	 */
 	function _prepareWithdraw() internal returns (uint256) {
 		uint256 _withdrawableDividend = withdrawableFundsOf(msg.sender);
-	
+
 		withdrawnFunds[msg.sender] = withdrawnFunds[msg.sender].add(_withdrawableDividend);
-		
+
 		emit FundsWithdrawn(msg.sender, _withdrawableDividend);
 
 		return _withdrawableDividend;
 	}
 
-	/** 
+	/**
 	 * prev. withdrawableDividendOf
 	 * @notice View the amount of funds that an address can withdraw.
 	 * @param _owner The address of a token holder.
 	 * @return The amount funds that `_owner` can withdraw.
 	 */
-	function withdrawableFundsOf(address _owner) public view returns(uint256) {
+	function withdrawableFundsOf(address _owner) public view override returns(uint256) {
 		return accumulativeFundsOf(_owner).sub(withdrawnFunds[_owner]);
 	}
-	
+
 	/**
 	 * prev. withdrawnDividendOf
 	 * @notice View the amount of funds that an address has withdrawn.
@@ -115,8 +110,8 @@ contract FundsDistributionToken is IFundsDistributionToken, ERC20, ERC20Detailed
 	 * @return The amount of funds that `_owner` has earned in total.
 	 */
 	function accumulativeFundsOf(address _owner) public view returns(uint256) {
-		return pointsPerShare.mul(balanceOf(_owner)).toInt256Safe()
-			.add(pointsCorrection[_owner]).toUint256Safe() / pointsMultiplier;
+		return uint256(int256(pointsPerShare.mul(balanceOf(_owner))) +
+			pointsCorrection[_owner]) / pointsMultiplier;
 	}
 
 	/**
@@ -126,12 +121,12 @@ contract FundsDistributionToken is IFundsDistributionToken, ERC20, ERC20Detailed
 	 * @param to The address to transfer to.
 	 * @param value The amount to be transferred.
 	 */
-	function _transfer(address from, address to, uint256 value) internal {
+	function _transfer(address from, address to, uint256 value) internal override {
 		super._transfer(from, to, value);
 
-		int256 _magCorrection = pointsPerShare.mul(value).toInt256Safe();
-		pointsCorrection[from] = pointsCorrection[from].add(_magCorrection);
-		pointsCorrection[to] = pointsCorrection[to].sub(_magCorrection);
+		int256 _magCorrection = int256(pointsPerShare * value);
+		pointsCorrection[from] = pointsCorrection[from] + _magCorrection;
+		pointsCorrection[to] = pointsCorrection[to] + _magCorrection;
 	}
 
 	/**
@@ -140,23 +135,25 @@ contract FundsDistributionToken is IFundsDistributionToken, ERC20, ERC20Detailed
 	 * @param account The account that will receive the created tokens.
 	 * @param value The amount that will be created.
 	 */
-	function _mint(address account, uint256 value) internal {
+	function _mint(address account, uint256 value) internal override {
 		super._mint(account, value);
 
 		pointsCorrection[account] = pointsCorrection[account]
-			.sub( (pointsPerShare.mul(value)).toInt256Safe() );
+			- int256((pointsPerShare.mul(value)));
 	}
-	
-	/** 
+
+	/**
 	 * @dev Internal function that burns an amount of the token of a given account.
 	 * Update pointsCorrection to keep funds unchanged.
 	 * @param account The account whose tokens will be burnt.
 	 * @param value The amount that will be burnt.
 	 */
-	function _burn(address account, uint256 value) internal {
+	function _burn(address account, uint256 value) internal override {
 		super._burn(account, value);
 
 		pointsCorrection[account] = pointsCorrection[account]
-			.add( (pointsPerShare.mul(value)).toInt256Safe() );
+			+ int256((pointsPerShare.mul(value)));
 	}
+
+
 }
